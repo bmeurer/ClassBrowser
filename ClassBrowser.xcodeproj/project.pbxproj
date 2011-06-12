@@ -7,27 +7,56 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C78C468313A3B65A001E58D7 /* CBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468213A3B65A001E58D7 /* CBClass.m */; };
+		C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468613A3B6D6001E58D7 /* CBFramework.m */; };
+		C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468913A3B847001E58D7 /* CBRuntime.m */; };
 		C7DCC6AA13A27238009B84CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DCC6A913A27238009B84CC /* UIKit.framework */; };
 		C7DCC6AC13A27238009B84CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DCC6AB13A27238009B84CC /* Foundation.framework */; };
 		C7DCC6AE13A27238009B84CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DCC6AD13A27238009B84CC /* CoreGraphics.framework */; };
-		C7DCC6B413A27238009B84CC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7DCC6B213A27238009B84CC /* InfoPlist.strings */; };
 		C7DCC6B713A27238009B84CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DCC6B613A27238009B84CC /* main.m */; };
-		C7DCC6BA13A27238009B84CC /* ClassBrowserAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DCC6B913A27238009B84CC /* ClassBrowserAppDelegate.m */; };
-		C7DCC6BD13A27238009B84CC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DCC6BB13A27238009B84CC /* MainWindow.xib */; };
+		C7DCC6BA13A27238009B84CC /* CBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DCC6B913A27238009B84CC /* CBAppDelegate.m */; };
+		C7DCC6D913A27522009B84CC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DCC6D813A27522009B84CC /* MainWindow.xib */; };
+		C7E3811113A27DD300758C3D /* CBFrameworkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */; };
+		C7E3811513A27E1500758C3D /* FrameworkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */; };
+		C7E3811B13A2ABAB00758C3D /* framework.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811A13A2ABAB00758C3D /* framework.png */; };
+		C7E3811F13A2B10E00758C3D /* CBClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */; };
+		C7E3812013A2B10E00758C3D /* ClassListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */; };
+		C7E3812213A2B2E600758C3D /* class.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E3812113A2B2E600758C3D /* class.png */; };
+		C7ED4DE013A49A5D0066B411 /* CBSectionedListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ED4DDF13A49A5D0066B411 /* CBSectionedListController.m */; };
+		C7ED4DE413A4A5CE0066B411 /* CBFrameworkDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */; };
+		C7ED4DE513A4A5CE0066B411 /* FrameworkDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7ED4DE313A4A5CE0066B411 /* FrameworkDetailsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C78C468113A3B65A001E58D7 /* CBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClass.h; sourceTree = "<group>"; };
+		C78C468213A3B65A001E58D7 /* CBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClass.m; sourceTree = "<group>"; };
+		C78C468513A3B6D6001E58D7 /* CBFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFramework.h; sourceTree = "<group>"; };
+		C78C468613A3B6D6001E58D7 /* CBFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFramework.m; sourceTree = "<group>"; };
+		C78C468813A3B847001E58D7 /* CBRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBRuntime.h; sourceTree = "<group>"; };
+		C78C468913A3B847001E58D7 /* CBRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBRuntime.m; sourceTree = "<group>"; };
 		C7DCC6A513A27238009B84CC /* ClassBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DCC6A913A27238009B84CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C7DCC6AB13A27238009B84CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7DCC6AD13A27238009B84CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C7DCC6B113A27238009B84CC /* ClassBrowser-Info.plist */ = {isa = PBXFileReference; path = "ClassBrowser-Info.plist"; sourceTree = "<group>"; };
-		C7DCC6B313A27238009B84CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C7DCC6B513A27238009B84CC /* ClassBrowser-Prefix.pch */ = {isa = PBXFileReference; path = "ClassBrowser-Prefix.pch"; sourceTree = "<group>"; };
+		C7DCC6B113A27238009B84CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7DCC6B513A27238009B84CC /* ClassBrowser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ClassBrowser-Prefix.pch"; sourceTree = "<group>"; };
 		C7DCC6B613A27238009B84CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C7DCC6B813A27238009B84CC /* ClassBrowserAppDelegate.h */ = {isa = PBXFileReference; path = ClassBrowserAppDelegate.h; sourceTree = "<group>"; };
-		C7DCC6B913A27238009B84CC /* ClassBrowserAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassBrowserAppDelegate.m; sourceTree = "<group>"; };
-		C7DCC6BC13A27238009B84CC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C7DCC6B813A27238009B84CC /* CBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBAppDelegate.h; sourceTree = "<group>"; };
+		C7DCC6B913A27238009B84CC /* CBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBAppDelegate.m; sourceTree = "<group>"; };
+		C7DCC6D813A27522009B84CC /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		C7E3810F13A27DD300758C3D /* CBFrameworkListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFrameworkListViewController.h; sourceTree = "<group>"; };
+		C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFrameworkListViewController.m; sourceTree = "<group>"; };
+		C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrameworkListViewController.xib; sourceTree = "<group>"; };
+		C7E3811A13A2ABAB00758C3D /* framework.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = framework.png; sourceTree = "<group>"; };
+		C7E3811C13A2B10E00758C3D /* CBClassListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClassListViewController.h; sourceTree = "<group>"; };
+		C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClassListViewController.m; sourceTree = "<group>"; };
+		C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassListViewController.xib; sourceTree = "<group>"; };
+		C7E3812113A2B2E600758C3D /* class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = class.png; sourceTree = "<group>"; };
+		C7ED4DDE13A49A5D0066B411 /* CBSectionedListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSectionedListController.h; sourceTree = "<group>"; };
+		C7ED4DDF13A49A5D0066B411 /* CBSectionedListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSectionedListController.m; sourceTree = "<group>"; };
+		C7ED4DE113A4A5CD0066B411 /* CBFrameworkDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFrameworkDetailsViewController.h; sourceTree = "<group>"; };
+		C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFrameworkDetailsViewController.m; sourceTree = "<group>"; };
+		C7ED4DE313A4A5CE0066B411 /* FrameworkDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrameworkDetailsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,10 +73,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C78C468413A3B6AE001E58D7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C78C468113A3B65A001E58D7 /* CBClass.h */,
+				C78C468213A3B65A001E58D7 /* CBClass.m */,
+				C78C468513A3B6D6001E58D7 /* CBFramework.h */,
+				C78C468613A3B6D6001E58D7 /* CBFramework.m */,
+				C78C468813A3B847001E58D7 /* CBRuntime.h */,
+				C78C468913A3B847001E58D7 /* CBRuntime.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		C7DCC69A13A27238009B84CC = {
 			isa = PBXGroup;
 			children = (
-				C7DCC6AF13A27238009B84CC /* ClassBrowser */,
+				C7DCC6C313A27249009B84CC /* Classes */,
+				C7DCC6D613A2750A009B84CC /* Resources */,
+				C7DCC6CD13A272D2009B84CC /* Supporting Files */,
 				C7DCC6A813A27238009B84CC /* Frameworks */,
 				C7DCC6A613A27238009B84CC /* Products */,
 			);
@@ -71,26 +115,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C7DCC6AF13A27238009B84CC /* ClassBrowser */ = {
+		C7DCC6C313A27249009B84CC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C7DCC6B813A27238009B84CC /* ClassBrowserAppDelegate.h */,
-				C7DCC6B913A27238009B84CC /* ClassBrowserAppDelegate.m */,
-				C7DCC6BB13A27238009B84CC /* MainWindow.xib */,
-				C7DCC6B013A27238009B84CC /* Supporting Files */,
+				C78C468413A3B6AE001E58D7 /* Entities */,
+				C7E3811313A27DF700758C3D /* View Controllers */,
+				C7DCC6B813A27238009B84CC /* CBAppDelegate.h */,
+				C7DCC6B913A27238009B84CC /* CBAppDelegate.m */,
 			);
-			path = ClassBrowser;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		C7DCC6B013A27238009B84CC /* Supporting Files */ = {
+		C7DCC6CD13A272D2009B84CC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C7DCC6B113A27238009B84CC /* ClassBrowser-Info.plist */,
-				C7DCC6B213A27238009B84CC /* InfoPlist.strings */,
 				C7DCC6B513A27238009B84CC /* ClassBrowser-Prefix.pch */,
+				C7DCC6B113A27238009B84CC /* Info.plist */,
 				C7DCC6B613A27238009B84CC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C7DCC6D613A2750A009B84CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */,
+				C7ED4DE313A4A5CE0066B411 /* FrameworkDetailsViewController.xib */,
+				C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */,
+				C7DCC6D813A27522009B84CC /* MainWindow.xib */,
+				C7E3812113A2B2E600758C3D /* class.png */,
+				C7E3811A13A2ABAB00758C3D /* framework.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C7E3811313A27DF700758C3D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C7E3811C13A2B10E00758C3D /* CBClassListViewController.h */,
+				C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */,
+				C7ED4DE113A4A5CD0066B411 /* CBFrameworkDetailsViewController.h */,
+				C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */,
+				C7E3810F13A27DD300758C3D /* CBFrameworkListViewController.h */,
+				C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */,
+				C7ED4DDE13A49A5D0066B411 /* CBSectionedListController.h */,
+				C7ED4DDF13A49A5D0066B411 /* CBSectionedListController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +190,7 @@
 		C7DCC69C13A27238009B84CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				ORGANIZATIONNAME = "Universität Siegen";
+				ORGANIZATIONNAME = "";
 			};
 			buildConfigurationList = C7DCC69F13A27238009B84CC /* Build configuration list for PBXProject "ClassBrowser" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -143,8 +214,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7DCC6B413A27238009B84CC /* InfoPlist.strings in Resources */,
-				C7DCC6BD13A27238009B84CC /* MainWindow.xib in Resources */,
+				C7DCC6D913A27522009B84CC /* MainWindow.xib in Resources */,
+				C7E3811513A27E1500758C3D /* FrameworkListViewController.xib in Resources */,
+				C7E3811B13A2ABAB00758C3D /* framework.png in Resources */,
+				C7E3812013A2B10E00758C3D /* ClassListViewController.xib in Resources */,
+				C7E3812213A2B2E600758C3D /* class.png in Resources */,
+				C7ED4DE513A4A5CE0066B411 /* FrameworkDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,30 +231,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7DCC6B713A27238009B84CC /* main.m in Sources */,
-				C7DCC6BA13A27238009B84CC /* ClassBrowserAppDelegate.m in Sources */,
+				C7DCC6BA13A27238009B84CC /* CBAppDelegate.m in Sources */,
+				C7E3811113A27DD300758C3D /* CBFrameworkListViewController.m in Sources */,
+				C7E3811F13A2B10E00758C3D /* CBClassListViewController.m in Sources */,
+				C78C468313A3B65A001E58D7 /* CBClass.m in Sources */,
+				C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */,
+				C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */,
+				C7ED4DE013A49A5D0066B411 /* CBSectionedListController.m in Sources */,
+				C7ED4DE413A4A5CE0066B411 /* CBFrameworkDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C7DCC6B213A27238009B84CC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C7DCC6B313A27238009B84CC /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C7DCC6BB13A27238009B84CC /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C7DCC6BC13A27238009B84CC /* en */,
-			);
-			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C7DCC6BE13A27238009B84CC /* Debug */ = {
@@ -221,8 +284,8 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ClassBrowser/ClassBrowser-Prefix.pch";
-				INFOPLIST_FILE = "ClassBrowser/ClassBrowser-Info.plist";
+				GCC_PREFIX_HEADER = "ClassBrowser-Prefix.pch";
+				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -234,8 +297,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ClassBrowser/ClassBrowser-Prefix.pch";
-				INFOPLIST_FILE = "ClassBrowser/ClassBrowser-Info.plist";
+				GCC_PREFIX_HEADER = "ClassBrowser-Prefix.pch";
+				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -261,6 +324,7 @@
 				C7DCC6C213A27238009B84CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
