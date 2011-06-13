@@ -29,6 +29,7 @@
 
 #import "CBClassListViewController.h"
 #import "CBFrameworkListViewController.h"
+#import "CBProtocolListViewController.h"
 #import "CBRootViewController.h"
 #import "CBRuntime.h"
 
@@ -169,6 +170,16 @@
                         classListViewController.title = @"Classes";
                         [self.navigationController pushViewController:classListViewController animated:YES];
                         [classListViewController release];
+                        break;
+                    }
+                        
+                    case 1: // Protocols
+                    {
+                        CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"ProtocolListViewController" bundle:nil];
+                        protocolListViewController.objects = [[CBRuntime sharedRuntime] allProtocols];
+                        protocolListViewController.title = @"Protocols";
+                        [self.navigationController pushViewController:protocolListViewController animated:YES];
+                        [protocolListViewController release];
                         break;
                     }
                 }

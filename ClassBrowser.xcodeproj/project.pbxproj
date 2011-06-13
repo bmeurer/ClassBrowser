@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C714FC8713A6718C002C2CDF /* CBProtocolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */; };
+		C714FC8813A6718C002C2CDF /* ProtocolListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C714FC8613A6718C002C2CDF /* ProtocolListViewController.xib */; };
 		C78C468313A3B65A001E58D7 /* CBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468213A3B65A001E58D7 /* CBClass.m */; };
 		C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468613A3B6D6001E58D7 /* CBFramework.m */; };
 		C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468913A3B847001E58D7 /* CBRuntime.m */; };
@@ -45,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C714FC8413A6718C002C2CDF /* CBProtocolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBProtocolListViewController.h; sourceTree = "<group>"; };
+		C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBProtocolListViewController.m; sourceTree = "<group>"; };
+		C714FC8613A6718C002C2CDF /* ProtocolListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProtocolListViewController.xib; sourceTree = "<group>"; };
 		C78C468113A3B65A001E58D7 /* CBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClass.h; sourceTree = "<group>"; };
 		C78C468213A3B65A001E58D7 /* CBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClass.m; sourceTree = "<group>"; };
 		C78C468513A3B6D6001E58D7 /* CBFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFramework.h; sourceTree = "<group>"; };
@@ -217,6 +222,7 @@
 				C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */,
 				C7DCC6D813A27522009B84CC /* MainWindow.xib */,
 				C7CF077D13A4EE15008B3BA0 /* MethodListViewController.xib */,
+				C714FC8613A6718C002C2CDF /* ProtocolListViewController.xib */,
 				C7CAD91B13A52C170024ADCE /* RootViewController.xib */,
 			);
 			name = Resources;
@@ -235,6 +241,8 @@
 				C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */,
 				C7CF077813A4ED7A008B3BA0 /* CBMethodListViewController.h */,
 				C7CF077913A4ED7A008B3BA0 /* CBMethodListViewController.m */,
+				C714FC8413A6718C002C2CDF /* CBProtocolListViewController.h */,
+				C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */,
 				C7CAD91913A52C170024ADCE /* CBRootViewController.h */,
 				C7CAD91A13A52C170024ADCE /* CBRootViewController.m */,
 				C7ED4DDE13A49A5D0066B411 /* CBSectionedListViewController.h */,
@@ -310,6 +318,7 @@
 				C7CAD93A13A6684C0024ADCE /* methods.png in Resources */,
 				C7CAD93B13A6684C0024ADCE /* properties.png in Resources */,
 				C7CAD93C13A6684C0024ADCE /* protocols.png in Resources */,
+				C714FC8813A6718C002C2CDF /* ProtocolListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +344,7 @@
 				C7CAD91713A520970024ADCE /* CBProtocol.m in Sources */,
 				C7CAD91C13A52C170024ADCE /* CBRootViewController.m in Sources */,
 				C7CAD92E13A62D9E0024ADCE /* UILabel+BMRoundedRectAdditions.m in Sources */,
+				C714FC8713A6718C002C2CDF /* CBProtocolListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
