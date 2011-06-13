@@ -25,11 +25,9 @@
  * SUCH DAMAGE.
  */
 
-#import "CBSectionedListController.h"
+#import "CBSectionedListViewController.h"
 
 
-@interface CBClassListViewController : CBSectionedListController
-
-@property (nonatomic, copy) NSArray *classes;
+@interface CBClassListViewController : CBSectionedListViewController
 
 @end

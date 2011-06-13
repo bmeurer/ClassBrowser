@@ -36,6 +36,7 @@
 
 @synthesize allClasses = _allClasses;
 @synthesize allFrameworks = _allFrameworks;
+@synthesize allProtocols = _allProtocols;
 
 static CBRuntime *sharedRuntime = nil;
 
@@ -99,62 +100,65 @@ static CBRuntime *sharedRuntime = nil;
         // Determine all classes within all (loaded) frameworks
         unsigned klassCount = 0, klassIndex;
         Class *klassList = objc_copyClassList(&klassCount);
-        NSMutableDictionary *frameworks = [[NSMutableDictionary alloc] init];
-        NSMutableDictionary *classes = [[NSMutableDictionary alloc] initWithCapacity:klassCount];
+        _frameworks = [[NSMutableDictionary alloc] init];
+        _classes = [[NSMutableDictionary alloc] initWithCapacity:klassCount];
         for (klassIndex = 0; klassIndex < klassCount; ++klassIndex) {
             CBClass *class = [[CBClass alloc] initWithClass:klassList[klassIndex]];
             if (class) {
                 NSBundle *bundle = class.bundle;
                 NSString *bundleIdentifier = [bundle bundleIdentifier];
                 if (bundleIdentifier && bundle != [NSBundle mainBundle]) {
-                    CBFramework *framework = [frameworks objectForKey:bundleIdentifier];
+                    CBFramework *framework = [_frameworks objectForKey:bundleIdentifier];
                     if (!framework) {
                         framework = [[CBFramework alloc] initWithBundle:bundle];
                         if (framework) {
-                            [frameworks setObject:framework forKey:bundleIdentifier];
+                            [_frameworks setObject:framework forKey:bundleIdentifier];
                             [framework release];
                         }
                     }
                     if (framework) {
-                        [classes setObject:class forKey:class.name];
+                        [_classes setObject:class forKey:class.name];
                     }
                 }
                 [class release];
             }
         }
-        _frameworks = [frameworks copy];
-        [frameworks release];
-        _classes = [classes copy];
-        [classes release];
         free(klassList);
+        
+        // Add all frameworks without classes
+        for (NSBundle *bundle in [NSBundle allFrameworks]) {
+            NSString *bundleIdentifier = [bundle bundleIdentifier];
+            if (bundleIdentifier && bundle != [NSBundle mainBundle]) {
+                CBFramework *framework = [_frameworks objectForKey:bundleIdentifier];
+                if (!framework) {
+                    framework = [[CBFramework alloc] initWithBundle:bundle];
+                    if (framework) {
+                        [_frameworks setObject:framework forKey:bundleIdentifier];
+                        [framework release];
+                    }
+                }
+            }
+        }
+        
+        // Determine all protocols
+        unsigned protocolCount = 0, protocolIndex;
+        Protocol **protocolList = objc_copyProtocolList(&protocolCount);
+        _protocols = [[NSMutableDictionary alloc] initWithCapacity:protocolCount];
+        for (protocolIndex = 0; protocolIndex < protocolCount; ++protocolIndex) {
+            CBProtocol *protocol = [[CBProtocol alloc] initWithProtocol:protocolList[protocolIndex]];
+            if (protocol) {
+                [_protocols setObject:protocol forKey:protocol.name];
+                [protocol release];
+            }
+        }
+        free(protocolList);
+        
+        // Collect the classes, frameworks and protocols
+        _allClasses = [[_classes allValues] retain];
+        _allFrameworks = [[_frameworks allValues] retain];
+        _allProtocols = [[_protocols allValues] retain];
     }
     return self;
-}
-
-- (NSArray *)allClasses
-{
-    if (!_allClasses) {
-        _allClasses = [[_classes allValues] copy];
-    }
-    return _allClasses;
-}
-
-- (CBClass *)classByClassName:(NSString *)aClassName
-{
-    return aClassName ? [_classes objectForKey:aClassName] : nil;
-}
-
-- (NSArray *)allFrameworks
-{
-    if (!_allFrameworks) {
-        _allFrameworks = [[_frameworks allValues] copy];
-    }
-    return _allFrameworks;
-}
-
-- (CBFramework *)frameworkByBundleIdentifier:(NSString *)aBundleIdentifier
-{
-    return aBundleIdentifier ? [_frameworks objectForKey:aBundleIdentifier] : nil;
 }
 
 @end

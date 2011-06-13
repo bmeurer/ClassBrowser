@@ -25,10 +25,10 @@
  * SUCH DAMAGE.
  */
 
-#import "CBSectionedListController.h"
+#import "CBSectionedListViewController.h"
 
 
-@implementation CBSectionedListController
+@implementation CBSectionedListViewController
 
 @synthesize objects = _objects;
 

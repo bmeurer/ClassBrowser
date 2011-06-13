@@ -28,25 +28,15 @@
 #import <Foundation/Foundation.h>
 
 
-@class CBFramework;
-
-@interface CBClass : NSObject {
+@interface CBProtocol : NSObject {
 @private
-    Class _klass;
+    Protocol *_protocol;
 }
 
-- (id)initWithClass:(Class)aClass;
+- (id)initWithProtocol:(Protocol *)aProtocol;
 
-@property (nonatomic, readonly) NSBundle *bundle;
-@property (nonatomic, readonly) NSArray *methods;
 @property (nonatomic, readonly) NSString *name;
 
-@property (nonatomic, readonly) CBFramework *framework;
-@property (nonatomic, readonly) size_t instanceSize;
-@property (nonatomic, readonly) NSArray *subClasses;
-@property (nonatomic, readonly) CBClass *superClass;
-@property (nonatomic, readonly) int version;
-
-+ (CBClass *)classWithName:(NSString *)aName;
++ (CBProtocol *)protocolWithName:(NSString *)aName;
 
 @end

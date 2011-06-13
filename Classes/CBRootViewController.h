@@ -25,28 +25,9 @@
  * SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 
-@class CBFramework;
-
-@interface CBClass : NSObject {
-@private
-    Class _klass;
-}
-
-- (id)initWithClass:(Class)aClass;
-
-@property (nonatomic, readonly) NSBundle *bundle;
-@property (nonatomic, readonly) NSArray *methods;
-@property (nonatomic, readonly) NSString *name;
-
-@property (nonatomic, readonly) CBFramework *framework;
-@property (nonatomic, readonly) size_t instanceSize;
-@property (nonatomic, readonly) NSArray *subClasses;
-@property (nonatomic, readonly) CBClass *superClass;
-@property (nonatomic, readonly) int version;
-
-+ (CBClass *)classWithName:(NSString *)aName;
+@interface CBRootViewController : UITableViewController
 
 @end

@@ -25,28 +25,21 @@
  * SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 
-@class CBFramework;
+/**
+ * Category on UILabel which adds a property @c showsRoundedRect, which, if
+ * set to @c YES, causes the label to be drawn on a rounded rect, similar to
+ * the emblem shown for the number of new mails in the iPhone Mail app.
+ */
+@interface UILabel (BMRoundedRectAdditions)
 
-@interface CBClass : NSObject {
-@private
-    Class _klass;
-}
-
-- (id)initWithClass:(Class)aClass;
-
-@property (nonatomic, readonly) NSBundle *bundle;
-@property (nonatomic, readonly) NSArray *methods;
-@property (nonatomic, readonly) NSString *name;
-
-@property (nonatomic, readonly) CBFramework *framework;
-@property (nonatomic, readonly) size_t instanceSize;
-@property (nonatomic, readonly) NSArray *subClasses;
-@property (nonatomic, readonly) CBClass *superClass;
-@property (nonatomic, readonly) int version;
-
-+ (CBClass *)classWithName:(NSString *)aName;
+/**
+ * If this is set to @c YES, then the label will be drawn on a rounded rect,
+ * similar to the emblems shown for the number of new mails in the iPhone
+ * Mail app.
+ */
+@property (nonatomic, assign) BOOL showsRoundedRect;
 
 @end

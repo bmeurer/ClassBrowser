@@ -25,14 +25,11 @@
  * SUCH DAMAGE.
  */
 
-#import "CBRuntime.h"
-
-#import "CBClassDetailsViewController.h"
-#import "CBClassListViewController.h"
+#import "CBMethod.h"
 #import "CBMethodListViewController.h"
 
 
-@implementation CBClassListViewController
+@implementation CBMethodListViewController
 
 #pragma mark - UITableViewDataSource methods
 
@@ -42,35 +39,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    CBClass *class = [self tableView:tableView objectForRowAtIndexPath:indexPath];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d methods", [class.methods count]];
-    cell.imageView.image = [UIImage imageNamed:@"class"];
-    cell.textLabel.text = class.name;
+    CBMethod *method = [self tableView:tableView objectForRowAtIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:@"method"];
+    cell.textLabel.text = method.name;
     return cell;
-}
-
-#pragma mark - UITableViewDelegate methods
-
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    CBClass *class = [self tableView:tableView objectForRowAtIndexPath:indexPath];
-    CBClassDetailsViewController *classDetailsViewController = [[CBClassDetailsViewController alloc] initWithNibName:@"ClassDetailsViewController" bundle:nil];
-    classDetailsViewController.clazz = class;
-    classDetailsViewController.title = @"Info";
-    [self.navigationController pushViewController:classDetailsViewController animated:YES];
-    [classDetailsViewController release];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CBClass *class = [self tableView:tableView objectForRowAtIndexPath:indexPath];
-    CBMethodListViewController *methodListViewController = [[CBMethodListViewController alloc] initWithNibName:@"MethodListViewController" bundle:nil];
-    methodListViewController.objects = class.methods;
-    methodListViewController.title = class.name;
-    [self.navigationController pushViewController:methodListViewController animated:YES];
-    [methodListViewController release];
 }
 
 @end

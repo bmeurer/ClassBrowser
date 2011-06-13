@@ -25,19 +25,16 @@
  * SUCH DAMAGE.
  */
 
-#import "UILabel+BMRoundedRectAdditions.h"
-
-#import "CBClassListViewController.h"
-#import "CBFrameworkDetailsViewController.h"
+#import "CBClassDetailsViewController.h"
 
 
-@implementation CBFrameworkDetailsViewController
+@implementation CBClassDetailsViewController
 
-@synthesize framework = _framework;
+@synthesize clazz = _clazz;
 
 - (void)dealloc
 {
-    [_framework release];
+    [_clazz release];
     [super dealloc];
 }
 
@@ -65,12 +62,11 @@
     if (tableView == self.tableView) {
         switch (section) {
             case 0:
-                // TODO
                 numberOfRows = 2;
                 break;
-                
+
             case 1:
-                numberOfRows = 2;
+                numberOfRows = 4;
                 break;
         }
     }
@@ -89,16 +85,17 @@
                 if (cell == nil) {
                     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
                 }
-                NSBundle *bundle = self.framework.bundle;
                 switch (indexPath.row) {
                     case 0:
-                        cell.detailTextLabel.text = [bundle objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey] ?: @"Unknown";
-                        cell.textLabel.text = @"Version";
+                    {
+                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d B", self.clazz.instanceSize];
+                        cell.textLabel.text = @"Instance size";
                         break;
-
+                    }
+                        
                     case 1:
-                        cell.detailTextLabel.text = [bundle bundleIdentifier];
-                        cell.textLabel.text = @"Identifier";
+                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.clazz.version];
+                        cell.textLabel.text = @"Version";
                         break;
                 }
                 break;
@@ -111,27 +108,27 @@
                 if (cell == nil) {
                     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                    cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:(CGFloat)14.0f];
-                    cell.detailTextLabel.showsRoundedRect = YES;
-                    cell.detailTextLabel.textAlignment = UITextAlignmentCenter;
-                    cell.detailTextLabel.textColor = [UIColor whiteColor];
-                }
-                else {
-                    cell.detailTextLabel.text = nil;
                 }
                 switch (indexPath.row) {
-                    case 0: // Classes
-                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [self.framework.classes count]];
-                        cell.textLabel.text = @"Classes";
+                    case 0:
+                        cell.textLabel.text = @"Instance variables";
                         break;
                         
-                    case 1: // Methods
+                    case 1:
                         cell.textLabel.text = @"Methods";
+                        break;
+                        
+                    case 2:
+                        cell.textLabel.text = @"Properties";
+                        break;
+                        
+                    case 3:
+                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [self.clazz.subClasses count]];
+                        cell.textLabel.text = @"Subclasses";
                         break;
                 }
                 break;
             }
-
         }
     }
     return cell;
@@ -143,14 +140,14 @@
     if (tableView == self.tableView) {
         switch (section) {
             case 0:
-                title = self.framework.name;
+                title = self.clazz.name;
                 break;
         }
     }
     return title;
 }
 
-#pragma mark - UITableViewDelegate methods
+#pragma mark - Table view delegate
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -166,29 +163,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == self.tableView) {
-        switch (indexPath.section) {
-            case 1:
-                switch (indexPath.row) {
-                    case 0: // Classes
-                    {
-                        CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"ClassListViewController" bundle:nil];
-                        classListViewController.objects = self.framework.classes;
-                        classListViewController.title = self.framework.name;
-                        [self.navigationController pushViewController:classListViewController animated:YES];
-                        [classListViewController release];
-                        break;
-                    }
-                        
-                    case 1: // Methods
-                    {
-                        // TODO
-                        break;
-                    }
-                }
-                break;
-        }
-    }
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     [detailViewController release];
+     */
 }
 
 @end

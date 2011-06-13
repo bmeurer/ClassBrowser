@@ -10,6 +10,23 @@
 		C78C468313A3B65A001E58D7 /* CBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468213A3B65A001E58D7 /* CBClass.m */; };
 		C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468613A3B6D6001E58D7 /* CBFramework.m */; };
 		C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468913A3B847001E58D7 /* CBRuntime.m */; };
+		C7CAD91713A520970024ADCE /* CBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CAD91613A520970024ADCE /* CBProtocol.m */; };
+		C7CAD91C13A52C170024ADCE /* CBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CAD91A13A52C170024ADCE /* CBRootViewController.m */; };
+		C7CAD91D13A52C170024ADCE /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD91B13A52C170024ADCE /* RootViewController.xib */; };
+		C7CAD91F13A52EB90024ADCE /* frameworks.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD91E13A52EB90024ADCE /* frameworks.png */; };
+		C7CAD92113A53D240024ADCE /* classes.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD92013A53D240024ADCE /* classes.png */; };
+		C7CAD92E13A62D9E0024ADCE /* UILabel+BMRoundedRectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CAD92D13A62D9D0024ADCE /* UILabel+BMRoundedRectAdditions.m */; };
+		C7CAD93513A667540024ADCE /* property.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD93313A667540024ADCE /* property.png */; };
+		C7CAD93613A667540024ADCE /* protocol.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD93413A667540024ADCE /* protocol.png */; };
+		C7CAD93A13A6684C0024ADCE /* methods.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD93713A6684C0024ADCE /* methods.png */; };
+		C7CAD93B13A6684C0024ADCE /* properties.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD93813A6684C0024ADCE /* properties.png */; };
+		C7CAD93C13A6684C0024ADCE /* protocols.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD93913A6684C0024ADCE /* protocols.png */; };
+		C7CF077413A4D341008B3BA0 /* ClassDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D2E55713A4BF7700AAD04C /* ClassDetailsViewController.xib */; };
+		C7CF077713A4E98A008B3BA0 /* CBMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CF077613A4E98A008B3BA0 /* CBMethod.m */; };
+		C7CF077B13A4ED7B008B3BA0 /* CBMethodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CF077913A4ED7A008B3BA0 /* CBMethodListViewController.m */; };
+		C7CF077E13A4EE15008B3BA0 /* MethodListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CF077D13A4EE15008B3BA0 /* MethodListViewController.xib */; };
+		C7CF078013A4F24F008B3BA0 /* method.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CF077F13A4F24F008B3BA0 /* method.png */; };
+		C7D2E55A13A4BF7800AAD04C /* CBClassDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D2E55813A4BF7800AAD04C /* CBClassDetailsViewController.m */; };
 		C7DCC6AA13A27238009B84CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DCC6A913A27238009B84CC /* UIKit.framework */; };
 		C7DCC6AC13A27238009B84CC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DCC6AB13A27238009B84CC /* Foundation.framework */; };
 		C7DCC6AE13A27238009B84CC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DCC6AD13A27238009B84CC /* CoreGraphics.framework */; };
@@ -22,7 +39,7 @@
 		C7E3811F13A2B10E00758C3D /* CBClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */; };
 		C7E3812013A2B10E00758C3D /* ClassListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */; };
 		C7E3812213A2B2E600758C3D /* class.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E3812113A2B2E600758C3D /* class.png */; };
-		C7ED4DE013A49A5D0066B411 /* CBSectionedListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ED4DDF13A49A5D0066B411 /* CBSectionedListController.m */; };
+		C7ED4DE013A49A5D0066B411 /* CBSectionedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ED4DDF13A49A5D0066B411 /* CBSectionedListViewController.m */; };
 		C7ED4DE413A4A5CE0066B411 /* CBFrameworkDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */; };
 		C7ED4DE513A4A5CE0066B411 /* FrameworkDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7ED4DE313A4A5CE0066B411 /* FrameworkDetailsViewController.xib */; };
 /* End PBXBuildFile section */
@@ -34,6 +51,29 @@
 		C78C468613A3B6D6001E58D7 /* CBFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFramework.m; sourceTree = "<group>"; };
 		C78C468813A3B847001E58D7 /* CBRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBRuntime.h; sourceTree = "<group>"; };
 		C78C468913A3B847001E58D7 /* CBRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBRuntime.m; sourceTree = "<group>"; };
+		C7CAD91513A520970024ADCE /* CBProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBProtocol.h; sourceTree = "<group>"; };
+		C7CAD91613A520970024ADCE /* CBProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBProtocol.m; sourceTree = "<group>"; };
+		C7CAD91913A52C170024ADCE /* CBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBRootViewController.h; sourceTree = "<group>"; };
+		C7CAD91A13A52C170024ADCE /* CBRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBRootViewController.m; sourceTree = "<group>"; };
+		C7CAD91B13A52C170024ADCE /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		C7CAD91E13A52EB90024ADCE /* frameworks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frameworks.png; sourceTree = "<group>"; };
+		C7CAD92013A53D240024ADCE /* classes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classes.png; sourceTree = "<group>"; };
+		C7CAD92C13A62D9D0024ADCE /* UILabel+BMRoundedRectAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BMRoundedRectAdditions.h"; sourceTree = "<group>"; };
+		C7CAD92D13A62D9D0024ADCE /* UILabel+BMRoundedRectAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BMRoundedRectAdditions.m"; sourceTree = "<group>"; };
+		C7CAD93313A667540024ADCE /* property.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = property.png; sourceTree = "<group>"; };
+		C7CAD93413A667540024ADCE /* protocol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = protocol.png; sourceTree = "<group>"; };
+		C7CAD93713A6684C0024ADCE /* methods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = methods.png; sourceTree = "<group>"; };
+		C7CAD93813A6684C0024ADCE /* properties.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = properties.png; sourceTree = "<group>"; };
+		C7CAD93913A6684C0024ADCE /* protocols.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = protocols.png; sourceTree = "<group>"; };
+		C7CF077313A4C54D008B3BA0 /* CBClassDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClassDetailsViewController.h; sourceTree = "<group>"; };
+		C7CF077513A4E98A008B3BA0 /* CBMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMethod.h; sourceTree = "<group>"; };
+		C7CF077613A4E98A008B3BA0 /* CBMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMethod.m; sourceTree = "<group>"; };
+		C7CF077813A4ED7A008B3BA0 /* CBMethodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMethodListViewController.h; sourceTree = "<group>"; };
+		C7CF077913A4ED7A008B3BA0 /* CBMethodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMethodListViewController.m; sourceTree = "<group>"; };
+		C7CF077D13A4EE15008B3BA0 /* MethodListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodListViewController.xib; sourceTree = "<group>"; };
+		C7CF077F13A4F24F008B3BA0 /* method.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = method.png; sourceTree = "<group>"; };
+		C7D2E55713A4BF7700AAD04C /* ClassDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassDetailsViewController.xib; sourceTree = "<group>"; };
+		C7D2E55813A4BF7800AAD04C /* CBClassDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClassDetailsViewController.m; sourceTree = "<group>"; };
 		C7DCC6A513A27238009B84CC /* ClassBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DCC6A913A27238009B84CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C7DCC6AB13A27238009B84CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -52,8 +92,8 @@
 		C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClassListViewController.m; sourceTree = "<group>"; };
 		C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassListViewController.xib; sourceTree = "<group>"; };
 		C7E3812113A2B2E600758C3D /* class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = class.png; sourceTree = "<group>"; };
-		C7ED4DDE13A49A5D0066B411 /* CBSectionedListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSectionedListController.h; sourceTree = "<group>"; };
-		C7ED4DDF13A49A5D0066B411 /* CBSectionedListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSectionedListController.m; sourceTree = "<group>"; };
+		C7ED4DDE13A49A5D0066B411 /* CBSectionedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSectionedListViewController.h; sourceTree = "<group>"; };
+		C7ED4DDF13A49A5D0066B411 /* CBSectionedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSectionedListViewController.m; sourceTree = "<group>"; };
 		C7ED4DE113A4A5CD0066B411 /* CBFrameworkDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFrameworkDetailsViewController.h; sourceTree = "<group>"; };
 		C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFrameworkDetailsViewController.m; sourceTree = "<group>"; };
 		C7ED4DE313A4A5CE0066B411 /* FrameworkDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrameworkDetailsViewController.xib; sourceTree = "<group>"; };
@@ -80,10 +120,40 @@
 				C78C468213A3B65A001E58D7 /* CBClass.m */,
 				C78C468513A3B6D6001E58D7 /* CBFramework.h */,
 				C78C468613A3B6D6001E58D7 /* CBFramework.m */,
+				C7CF077513A4E98A008B3BA0 /* CBMethod.h */,
+				C7CF077613A4E98A008B3BA0 /* CBMethod.m */,
+				C7CAD91513A520970024ADCE /* CBProtocol.h */,
+				C7CAD91613A520970024ADCE /* CBProtocol.m */,
 				C78C468813A3B847001E58D7 /* CBRuntime.h */,
 				C78C468913A3B847001E58D7 /* CBRuntime.m */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		C7CAD92513A60F9B0024ADCE /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				C7CAD92C13A62D9D0024ADCE /* UILabel+BMRoundedRectAdditions.h */,
+				C7CAD92D13A62D9D0024ADCE /* UILabel+BMRoundedRectAdditions.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		C7CAD93D13A6685E0024ADCE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C7E3812113A2B2E600758C3D /* class.png */,
+				C7CAD92013A53D240024ADCE /* classes.png */,
+				C7E3811A13A2ABAB00758C3D /* framework.png */,
+				C7CAD91E13A52EB90024ADCE /* frameworks.png */,
+				C7CF077F13A4F24F008B3BA0 /* method.png */,
+				C7CAD93713A6684C0024ADCE /* methods.png */,
+				C7CAD93313A667540024ADCE /* property.png */,
+				C7CAD93813A6684C0024ADCE /* properties.png */,
+				C7CAD93413A667540024ADCE /* protocol.png */,
+				C7CAD93913A6684C0024ADCE /* protocols.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		C7DCC69A13A27238009B84CC = {
@@ -118,6 +188,7 @@
 		C7DCC6C313A27249009B84CC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C7CAD92513A60F9B0024ADCE /* Additions */,
 				C78C468413A3B6AE001E58D7 /* Entities */,
 				C7E3811313A27DF700758C3D /* View Controllers */,
 				C7DCC6B813A27238009B84CC /* CBAppDelegate.h */,
@@ -139,12 +210,14 @@
 		C7DCC6D613A2750A009B84CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C7CAD93D13A6685E0024ADCE /* Images */,
+				C7D2E55713A4BF7700AAD04C /* ClassDetailsViewController.xib */,
 				C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */,
 				C7ED4DE313A4A5CE0066B411 /* FrameworkDetailsViewController.xib */,
 				C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */,
 				C7DCC6D813A27522009B84CC /* MainWindow.xib */,
-				C7E3812113A2B2E600758C3D /* class.png */,
-				C7E3811A13A2ABAB00758C3D /* framework.png */,
+				C7CF077D13A4EE15008B3BA0 /* MethodListViewController.xib */,
+				C7CAD91B13A52C170024ADCE /* RootViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -152,14 +225,20 @@
 		C7E3811313A27DF700758C3D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C7CF077313A4C54D008B3BA0 /* CBClassDetailsViewController.h */,
+				C7D2E55813A4BF7800AAD04C /* CBClassDetailsViewController.m */,
 				C7E3811C13A2B10E00758C3D /* CBClassListViewController.h */,
 				C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */,
 				C7ED4DE113A4A5CD0066B411 /* CBFrameworkDetailsViewController.h */,
 				C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */,
 				C7E3810F13A27DD300758C3D /* CBFrameworkListViewController.h */,
 				C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */,
-				C7ED4DDE13A49A5D0066B411 /* CBSectionedListController.h */,
-				C7ED4DDF13A49A5D0066B411 /* CBSectionedListController.m */,
+				C7CF077813A4ED7A008B3BA0 /* CBMethodListViewController.h */,
+				C7CF077913A4ED7A008B3BA0 /* CBMethodListViewController.m */,
+				C7CAD91913A52C170024ADCE /* CBRootViewController.h */,
+				C7CAD91A13A52C170024ADCE /* CBRootViewController.m */,
+				C7ED4DDE13A49A5D0066B411 /* CBSectionedListViewController.h */,
+				C7ED4DDF13A49A5D0066B411 /* CBSectionedListViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -214,12 +293,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7DCC6D913A27522009B84CC /* MainWindow.xib in Resources */,
-				C7E3811513A27E1500758C3D /* FrameworkListViewController.xib in Resources */,
-				C7E3811B13A2ABAB00758C3D /* framework.png in Resources */,
+				C7CF077413A4D341008B3BA0 /* ClassDetailsViewController.xib in Resources */,
 				C7E3812013A2B10E00758C3D /* ClassListViewController.xib in Resources */,
-				C7E3812213A2B2E600758C3D /* class.png in Resources */,
 				C7ED4DE513A4A5CE0066B411 /* FrameworkDetailsViewController.xib in Resources */,
+				C7E3811513A27E1500758C3D /* FrameworkListViewController.xib in Resources */,
+				C7DCC6D913A27522009B84CC /* MainWindow.xib in Resources */,
+				C7E3812213A2B2E600758C3D /* class.png in Resources */,
+				C7E3811B13A2ABAB00758C3D /* framework.png in Resources */,
+				C7CF077E13A4EE15008B3BA0 /* MethodListViewController.xib in Resources */,
+				C7CF078013A4F24F008B3BA0 /* method.png in Resources */,
+				C7CAD91D13A52C170024ADCE /* RootViewController.xib in Resources */,
+				C7CAD91F13A52EB90024ADCE /* frameworks.png in Resources */,
+				C7CAD92113A53D240024ADCE /* classes.png in Resources */,
+				C7CAD93513A667540024ADCE /* property.png in Resources */,
+				C7CAD93613A667540024ADCE /* protocol.png in Resources */,
+				C7CAD93A13A6684C0024ADCE /* methods.png in Resources */,
+				C7CAD93B13A6684C0024ADCE /* properties.png in Resources */,
+				C7CAD93C13A6684C0024ADCE /* protocols.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +327,14 @@
 				C78C468313A3B65A001E58D7 /* CBClass.m in Sources */,
 				C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */,
 				C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */,
-				C7ED4DE013A49A5D0066B411 /* CBSectionedListController.m in Sources */,
+				C7ED4DE013A49A5D0066B411 /* CBSectionedListViewController.m in Sources */,
 				C7ED4DE413A4A5CE0066B411 /* CBFrameworkDetailsViewController.m in Sources */,
+				C7D2E55A13A4BF7800AAD04C /* CBClassDetailsViewController.m in Sources */,
+				C7CF077713A4E98A008B3BA0 /* CBMethod.m in Sources */,
+				C7CF077B13A4ED7B008B3BA0 /* CBMethodListViewController.m in Sources */,
+				C7CAD91713A520970024ADCE /* CBProtocol.m in Sources */,
+				C7CAD91C13A52C170024ADCE /* CBRootViewController.m in Sources */,
+				C7CAD92E13A62D9E0024ADCE /* UILabel+BMRoundedRectAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

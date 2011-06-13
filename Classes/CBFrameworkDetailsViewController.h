@@ -30,9 +30,7 @@
 #import "CBFramework.h"
 
 
-@interface CBFrameworkDetailsViewController : UITableViewController {
-@private
-}
+@interface CBFrameworkDetailsViewController : UITableViewController
 
 @property (nonatomic, retain) CBFramework *framework;
 

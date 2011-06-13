@@ -36,4 +36,6 @@
 @property (nonatomic, readonly) NSArray *classes;
 @property (nonatomic, readonly) NSString *name;
 
++ (CBFramework *)frameworkWithBundleIdentifier:(NSString *)aBundleIdentifier;
+
 @end

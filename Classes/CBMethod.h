@@ -25,18 +25,18 @@
  * SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
+#include <objc/runtime.h>
+
+#import <Foundation/Foundation.h>
 
 
-@interface CBSectionedListController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate> {
+@interface CBMethod : NSObject {
 @private
-    NSArray *_objects;
-    NSMutableArray *_searchResults;
-    NSArray *_sections;
+    Method _method;
 }
 
-- (id)tableView:(UITableView *)tableView objectForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (id)initWithMethod:(Method)aMethod;
 
-@property (nonatomic, copy) NSArray *objects;
+@property (nonatomic, readonly) NSString *name;
 
 @end

@@ -25,28 +25,41 @@
  * SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import "CBRuntime.h"
 
 
-@class CBFramework;
+@implementation CBProtocol
 
-@interface CBClass : NSObject {
-@private
-    Class _klass;
+@synthesize name = _name;
+
+- (id)init
+{
+    return [self initWithProtocol:nil];
 }
 
-- (id)initWithClass:(Class)aClass;
+- (id)initWithProtocol:(Protocol *)aProtocol
+{
+    self = [super init];
+    if (self) {
+        _name = [NSStringFromProtocol(aProtocol) retain];
+        if (!_name) {
+            [self release];
+            return nil;
+        }
+        _protocol = aProtocol;
+    }
+    return self;
+}
 
-@property (nonatomic, readonly) NSBundle *bundle;
-@property (nonatomic, readonly) NSArray *methods;
-@property (nonatomic, readonly) NSString *name;
+- (void)dealloc
+{
+    [_name release];
+    [super dealloc];
+}
 
-@property (nonatomic, readonly) CBFramework *framework;
-@property (nonatomic, readonly) size_t instanceSize;
-@property (nonatomic, readonly) NSArray *subClasses;
-@property (nonatomic, readonly) CBClass *superClass;
-@property (nonatomic, readonly) int version;
-
-+ (CBClass *)classWithName:(NSString *)aName;
++ (CBProtocol *)protocolWithName:(NSString *)aName
+{
+    return aName ? [[CBRuntime sharedRuntime]->_protocols objectForKey:aName] : nil;
+}
 
 @end

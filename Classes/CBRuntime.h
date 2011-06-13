@@ -27,20 +27,21 @@
 
 #import "CBClass.h"
 #import "CBFramework.h"
+#import "CBMethod.h"
+#import "CBProtocol.h"
 
 
 @interface CBRuntime : NSObject {
-@private
-    NSDictionary *_classes;
-    NSDictionary *_frameworks;
+@package
+    NSMutableDictionary *_classes;
+    NSMutableDictionary *_frameworks;
+    NSMutableDictionary *_protocols;
 }
 
 + (CBRuntime *)sharedRuntime;
 
 @property (nonatomic, readonly) NSArray *allClasses;
-- (CBClass *)classByClassName:(NSString *)aClassName;
-
 @property (nonatomic, readonly) NSArray *allFrameworks;
-- (CBFramework *)frameworkByBundleIdentifier:(NSString *)aBundleIdentifier;
+@property (nonatomic, readonly) NSArray *allProtocols;
 
 @end

@@ -25,9 +25,9 @@
  * SUCH DAMAGE.
  */
 
-#import "CBSectionedListController.h"
+#import "CBSectionedListViewController.h"
 
 
-@interface CBFrameworkListViewController : CBSectionedListController
+@interface CBFrameworkListViewController : CBSectionedListViewController
 
 @end

@@ -80,4 +80,9 @@
     return _name;
 }
 
++ (CBFramework *)frameworkWithBundleIdentifier:(NSString *)aBundleIdentifier
+{
+    return aBundleIdentifier ? [[CBRuntime sharedRuntime]->_frameworks objectForKey:aBundleIdentifier] : nil;
+}
+
 @end

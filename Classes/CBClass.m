@@ -33,7 +33,14 @@
 @implementation CBClass
 
 @synthesize bundle = _bundle;
+@synthesize methods = _methods;
 @synthesize name = _name;
+
+@dynamic framework;
+@dynamic instanceSize;
+@dynamic subClasses;
+@dynamic superClass;
+@dynamic version;
 
 - (id)init
 {
@@ -57,21 +64,75 @@
 - (void)dealloc
 {
     [_bundle release];
+    [_methods release];
     [_name release];
     [super dealloc];
 }
 
 - (NSBundle *)bundle
 {
-    if (!_bundle && _klass) {
+    if (!_bundle) {
         _bundle = [NSBundle bundleForClass:_klass];
     }
     return _bundle;
 }
 
+- (NSArray *)methods
+{
+    if (!_methods) {
+        unsigned i, j, methodCount = 0;
+        Method *methods = class_copyMethodList(_klass, &methodCount);
+        if (methods) {
+            for (i = j = 0; i < methodCount; ++i) {
+                id method = [[CBMethod alloc] initWithMethod:methods[i]];
+                if (method) {
+                    methods[j++] = (Method)method;
+                }
+            }
+            _methods = [[NSArray alloc] initWithObjects:(const id *)methods count:j];
+            while (j != 0) {
+                [(id)methods[--j] release];
+            }
+            free(methods);
+        }
+    }
+    return _methods;
+}
+
 - (CBFramework *)framework
 {
-    return [[CBRuntime sharedRuntime] frameworkByBundleIdentifier:[self.bundle bundleIdentifier]];
+    return [CBFramework frameworkWithBundleIdentifier:[self.bundle bundleIdentifier]];
+}
+
+- (size_t)instanceSize
+{
+    return class_getInstanceSize(_klass);
+}
+
+- (NSArray *)subClasses
+{
+    NSMutableArray *subClasses = [NSMutableArray array];
+    for (CBClass *class in [[CBRuntime sharedRuntime] allClasses]) {
+        if (class_getSuperclass(class->_klass) == _klass) {
+            [subClasses addObject:class];
+        }
+    }
+    return subClasses;
+}
+
+- (CBClass *)superClass
+{
+    return [[self class] classWithName:NSStringFromClass(class_getSuperclass(_klass))];
+}
+
+- (int)version
+{
+    return class_getVersion(_klass);
+}
+
++ (CBClass *)classWithName:(NSString *)aName
+{
+    return aName ? [[CBRuntime sharedRuntime]->_classes objectForKey:aName] : nil;
 }
 
 @end

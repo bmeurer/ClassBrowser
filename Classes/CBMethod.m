@@ -25,28 +25,43 @@
  * SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import "CBMethod.h"
 
 
-@class CBFramework;
+@implementation CBMethod
 
-@interface CBClass : NSObject {
-@private
-    Class _klass;
+@synthesize name = _name;
+
+- (id)init
+{
+    return [self initWithMethod:NULL];
 }
 
-- (id)initWithClass:(Class)aClass;
+- (id)initWithMethod:(Method)aMethod
+{
+    self = [super init];
+    if (self) {
+        if (!aMethod) {
+            [self release];
+            return nil;
+        }
+        _method = aMethod;
+    }
+    return self;
+}
 
-@property (nonatomic, readonly) NSBundle *bundle;
-@property (nonatomic, readonly) NSArray *methods;
-@property (nonatomic, readonly) NSString *name;
+- (void)dealloc
+{
+    [_name release];
+    [super dealloc];
+}
 
-@property (nonatomic, readonly) CBFramework *framework;
-@property (nonatomic, readonly) size_t instanceSize;
-@property (nonatomic, readonly) NSArray *subClasses;
-@property (nonatomic, readonly) CBClass *superClass;
-@property (nonatomic, readonly) int version;
-
-+ (CBClass *)classWithName:(NSString *)aName;
+- (NSString *)name
+{
+    if (!_name) {
+        _name = [NSStringFromSelector(method_getName(_method)) retain];
+    }
+    return _name;
+}
 
 @end

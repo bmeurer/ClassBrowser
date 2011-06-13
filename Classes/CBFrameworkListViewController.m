@@ -34,24 +34,6 @@
 
 @implementation CBFrameworkListViewController
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
-#pragma mark - Properties
-
-- (NSArray *)objects
-{
-    return [[CBRuntime sharedRuntime] allFrameworks];
-}
-
-- (void)setObjects:(NSArray *)objects
-{
-    [NSException raise:NSInternalInconsistencyException
-                format:@"You may not set objects for CBFrameworkListViewController instances."];
-}
-
 #pragma mark - UITableViewDataSource methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,8 +45,6 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
-    
-    // Configure the cell...
     CBFramework *framework = [self tableView:tableView objectForRowAtIndexPath:indexPath];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d classes", [framework.classes count]];
     cell.imageView.image = [UIImage imageNamed:@"framework"];
@@ -80,6 +60,7 @@
     CBFramework *framework = [self tableView:tableView objectForRowAtIndexPath:indexPath];
     CBFrameworkDetailsViewController *frameworkDetailsViewController = [[CBFrameworkDetailsViewController alloc] initWithNibName:@"FrameworkDetailsViewController" bundle:nil];
     frameworkDetailsViewController.framework = framework;
+    frameworkDetailsViewController.title = @"Info";
     [self.navigationController pushViewController:frameworkDetailsViewController animated:YES];
     [frameworkDetailsViewController release];
 }
@@ -88,7 +69,7 @@
 {
     CBFramework *framework = [self tableView:tableView objectForRowAtIndexPath:indexPath];
     CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"ClassListViewController" bundle:nil];
-    classListViewController.classes = framework.classes;
+    classListViewController.objects = framework.classes;
     classListViewController.title = framework.name;
     [self.navigationController pushViewController:classListViewController animated:YES];
     [classListViewController release];
