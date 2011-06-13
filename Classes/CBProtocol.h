@@ -37,6 +37,6 @@
 
 @property (nonatomic, readonly) NSString *name;
 
-+ (CBProtocol *)protocolWithName:(NSString *)aName;
+- (NSSet *)protocols;
 
 @end

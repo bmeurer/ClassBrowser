@@ -25,7 +25,10 @@
  * SUCH DAMAGE.
  */
 
+#import "UILabel+BMRoundedRectAdditions.h"
+
 #import "CBClassDetailsViewController.h"
+#import "CBProtocolListViewController.h"
 
 
 @implementation CBClassDetailsViewController
@@ -50,25 +53,21 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger numberOfSections = 0;
-    if (tableView == self.tableView) {
-        numberOfSections = 2;
-    }
+    numberOfSections = 2;
     return numberOfSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger numberOfRows = 0;
-    if (tableView == self.tableView) {
-        switch (section) {
-            case 0:
-                numberOfRows = 2;
-                break;
-
-            case 1:
-                numberOfRows = 4;
-                break;
-        }
+    switch (section) {
+        case 0:
+            numberOfRows = 2;
+            break;
+            
+        case 1:
+            numberOfRows = 3;
+            break;
     }
     return numberOfRows;
 }
@@ -76,59 +75,61 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    if (tableView == self.tableView) {
-        switch (indexPath.section) {
-            case 0:
-            {
-                static NSString *const CellIdentifier = @"Cell0";
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil) {
-                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-                }
-                switch (indexPath.row) {
-                    case 0:
-                    {
-                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d B", self.clazz.instanceSize];
-                        cell.textLabel.text = @"Instance size";
-                        break;
-                    }
-                        
-                    case 1:
-                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.clazz.version];
-                        cell.textLabel.text = @"Version";
-                        break;
-                }
-                break;
+    switch (indexPath.section) {
+        case 0:
+        {
+            static NSString *const CellIdentifier = @"Cell0";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
             }
-                
-            case 1:
-            {
-                static NSString *const CellIdentifier = @"Cell1";
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil) {
-                    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d B", self.clazz.instanceSize];
+                    cell.textLabel.text = @"Instance size";
+                    break;
                 }
-                switch (indexPath.row) {
-                    case 0:
-                        cell.textLabel.text = @"Instance variables";
-                        break;
-                        
-                    case 1:
-                        cell.textLabel.text = @"Methods";
-                        break;
-                        
-                    case 2:
-                        cell.textLabel.text = @"Properties";
-                        break;
-                        
-                    case 3:
-                        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [self.clazz.subClasses count]];
-                        cell.textLabel.text = @"Subclasses";
-                        break;
-                }
-                break;
+                    
+                case 1:
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", self.clazz.version];
+                    cell.textLabel.text = @"Version";
+                    break;
             }
+            break;
+        }
+            
+        case 1:
+        {
+            static NSString *const CellIdentifier = @"Cell1";
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:(CGFloat)14.0f];
+                cell.detailTextLabel.showsRoundedRect = YES;
+                cell.detailTextLabel.textAlignment = UITextAlignmentCenter;
+                cell.detailTextLabel.textColor = [UIColor whiteColor];
+            }
+            else {
+                cell.detailTextLabel.text = nil;
+            }
+            switch (indexPath.row) {
+                case 0:
+                    cell.textLabel.text = @"Members";
+                    break;
+                    
+                case 1:
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.clazz allProtocols] count]];
+                    cell.textLabel.text = @"Protocols";
+                    break;
+                    
+                case 2:
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [self.clazz.subClasses count]];
+                    cell.textLabel.text = @"Subclasses";
+                    break;
+            }
+            break;
         }
     }
     return cell;
@@ -137,12 +138,10 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString *title = nil;
-    if (tableView == self.tableView) {
-        switch (section) {
-            case 0:
-                title = self.clazz.name;
-                break;
-        }
+    switch (section) {
+        case 0:
+            title = self.clazz.name;
+            break;
     }
     return title;
 }
@@ -151,26 +150,39 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == self.tableView) {
-        switch (indexPath.section) {
-            case 0:
-                indexPath = nil;
-                break;
-        }
+    switch (indexPath.section) {
+        case 0:
+            indexPath = nil;
+            break;
     }
     return indexPath;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    switch (indexPath.section) {
+        case 1:
+        {
+            switch (indexPath.row) {
+                case 1: // Protocols
+                {
+                    CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"ProtocolListViewController" bundle:nil];
+                    protocolListViewController.objects = [[self.clazz allProtocols] allObjects];
+                    protocolListViewController.title = @"Protocols";
+                    [self.navigationController pushViewController:protocolListViewController animated:YES];
+                    [protocolListViewController release];
+                    break;
+                }
+                    
+                case 2: // Subclasses
+                {
+                    // TODO
+                    break;
+                }
+            }
+            break;
+        }
+    }
 }
 
 @end

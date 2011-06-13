@@ -47,6 +47,9 @@
 @property (nonatomic, readonly) CBClass *superClass;
 @property (nonatomic, readonly) int version;
 
+- (NSSet *)protocols;
+- (NSSet *)allProtocols;
+
 + (CBClass *)classWithName:(NSString *)aName;
 
 @end

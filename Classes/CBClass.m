@@ -130,6 +130,50 @@
     return class_getVersion(_klass);
 }
 
+#pragma mark - Access to protocols
+
+- (NSSet *)protocols
+{
+    unsigned i, j, protocolCount = 0;
+    Protocol **protocolList = class_copyProtocolList(_klass, &protocolCount);
+    for (i = j = 0; i < protocolCount; ++i) {
+        CBProtocol *protocol = [[CBProtocol alloc] initWithProtocol:protocolList[i]];
+        if (protocol) {
+            protocolList[j++] = (Protocol *)protocol;
+        }
+    }
+    NSSet *protocols = [NSSet setWithObjects:(id *)protocolList count:j];
+    while (j > 0) {
+        [(id)protocolList[--j] release];
+    }
+    free(protocolList);
+    return protocols;
+}
+
+- (NSSet *)allProtocols
+{
+    NSSet *allProtocols = [self protocols];
+    for (CBClass *class = self;; ) {
+        class = [class superClass];
+        if (!class) {
+            break;
+        }
+        allProtocols = [allProtocols setByAddingObjectsFromSet:[class protocols]];
+    }
+    for (NSSet *protocols;; ) {
+        protocols = allProtocols;
+        for (CBProtocol *protocol in protocols) {
+            allProtocols = [allProtocols setByAddingObjectsFromSet:[protocol protocols]];
+        }
+        if ([allProtocols isEqualToSet:protocols]) {
+            break;
+        }
+    }
+    return allProtocols;
+}
+
+#pragma mark - Class methods
+
 + (CBClass *)classWithName:(NSString *)aName
 {
     return aName ? [[CBRuntime sharedRuntime]->_classes objectForKey:aName] : nil;

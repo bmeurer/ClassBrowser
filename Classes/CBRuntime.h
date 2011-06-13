@@ -35,7 +35,6 @@
 @package
     NSMutableDictionary *_classes;
     NSMutableDictionary *_frameworks;
-    NSMutableDictionary *_protocols;
 }
 
 + (CBRuntime *)sharedRuntime;

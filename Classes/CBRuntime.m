@@ -141,22 +141,23 @@ static CBRuntime *sharedRuntime = nil;
         }
         
         // Determine all protocols
-        unsigned protocolCount = 0, protocolIndex;
+        unsigned i, j, protocolCount = 0;
         Protocol **protocolList = objc_copyProtocolList(&protocolCount);
-        _protocols = [[NSMutableDictionary alloc] initWithCapacity:protocolCount];
-        for (protocolIndex = 0; protocolIndex < protocolCount; ++protocolIndex) {
-            CBProtocol *protocol = [[CBProtocol alloc] initWithProtocol:protocolList[protocolIndex]];
+        for (i = j = 0; i < protocolCount; ++i) {
+            CBProtocol *protocol = [[CBProtocol alloc] initWithProtocol:protocolList[i]];
             if (protocol) {
-                [_protocols setObject:protocol forKey:protocol.name];
-                [protocol release];
+                protocolList[j++] = (Protocol *)protocol;
             }
+        }
+        _allProtocols = [[NSArray alloc] initWithObjects:(id *)protocolList count:j];
+        while (j > 0) {
+            [(id)protocolList[--j] release];
         }
         free(protocolList);
         
-        // Collect the classes, frameworks and protocols
+        // Collect the classes and frameworks
         _allClasses = [[_classes allValues] retain];
         _allFrameworks = [[_frameworks allValues] retain];
-        _allProtocols = [[_protocols allValues] retain];
     }
     return self;
 }

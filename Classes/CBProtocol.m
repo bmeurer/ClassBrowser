@@ -57,9 +57,33 @@
     [super dealloc];
 }
 
-+ (CBProtocol *)protocolWithName:(NSString *)aName
+- (BOOL)isEqual:(id)anObject
 {
-    return aName ? [[CBRuntime sharedRuntime]->_protocols objectForKey:aName] : nil;
+    return ([anObject isMemberOfClass:[CBProtocol class]]
+            && [[self name] isEqualToString:[anObject name]]);
+}
+
+- (NSUInteger)hash
+{
+    return [[self name] hash];
+}
+
+- (NSSet *)protocols
+{
+    unsigned i, j, protocolCount = 0;
+    Protocol **protocolList = protocol_copyProtocolList(_protocol, &protocolCount);
+    for (i = j = 0; i < protocolCount; ++i) {
+        CBProtocol *protocol = [[CBProtocol alloc] initWithProtocol:protocolList[i]];
+        if (protocol) {
+            protocolList[j++] = (Protocol *)protocol;
+        }
+    }
+    NSSet *protocols = [NSSet setWithObjects:(id *)protocolList count:j];
+    while (j > 0) {
+        [(id)protocolList[--j] release];
+    }
+    free(protocolList);
+    return protocols;
 }
 
 @end
