@@ -67,7 +67,7 @@
                 numberOfRows = 2;
                 break;
                 
-            case 2: // Methods and Properties
+            case 2: // Messages and Properties
                 numberOfRows = 2;
                 break;
         }
