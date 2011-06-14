@@ -35,6 +35,8 @@
     Method _method;
 }
 
++ (CBMethod *)methodWithMethod:(Method)aMethod;
+
 - (id)initWithMethod:(Method)aMethod;
 
 @property (nonatomic, readonly) NSString *name;

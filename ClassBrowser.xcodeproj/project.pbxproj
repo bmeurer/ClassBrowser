@@ -10,7 +10,6 @@
 		C714FC8713A6718C002C2CDF /* CBProtocolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */; };
 		C78C468313A3B65A001E58D7 /* CBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468213A3B65A001E58D7 /* CBClass.m */; };
 		C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468613A3B6D6001E58D7 /* CBFramework.m */; };
-		C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468913A3B847001E58D7 /* CBRuntime.m */; };
 		C7CAD91713A520970024ADCE /* CBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CAD91613A520970024ADCE /* CBProtocol.m */; };
 		C7CAD91C13A52C170024ADCE /* CBRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CAD91A13A52C170024ADCE /* CBRootViewController.m */; };
 		C7CAD91D13A52C170024ADCE /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CAD91B13A52C170024ADCE /* RootViewController.xib */; };
@@ -50,8 +49,6 @@
 		C78C468213A3B65A001E58D7 /* CBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClass.m; sourceTree = "<group>"; };
 		C78C468513A3B6D6001E58D7 /* CBFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFramework.h; sourceTree = "<group>"; };
 		C78C468613A3B6D6001E58D7 /* CBFramework.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFramework.m; sourceTree = "<group>"; };
-		C78C468813A3B847001E58D7 /* CBRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBRuntime.h; sourceTree = "<group>"; };
-		C78C468913A3B847001E58D7 /* CBRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBRuntime.m; sourceTree = "<group>"; };
 		C7CAD91513A520970024ADCE /* CBProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBProtocol.h; sourceTree = "<group>"; };
 		C7CAD91613A520970024ADCE /* CBProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBProtocol.m; sourceTree = "<group>"; };
 		C7CAD91913A52C170024ADCE /* CBRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBRootViewController.h; sourceTree = "<group>"; };
@@ -112,7 +109,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C78C468413A3B6AE001E58D7 /* Entities */ = {
+		C78C468413A3B6AE001E58D7 /* Runtime Entities */ = {
 			isa = PBXGroup;
 			children = (
 				C78C468113A3B65A001E58D7 /* CBClass.h */,
@@ -123,10 +120,8 @@
 				C7CF077613A4E98A008B3BA0 /* CBMethod.m */,
 				C7CAD91513A520970024ADCE /* CBProtocol.h */,
 				C7CAD91613A520970024ADCE /* CBProtocol.m */,
-				C78C468813A3B847001E58D7 /* CBRuntime.h */,
-				C78C468913A3B847001E58D7 /* CBRuntime.m */,
 			);
-			name = Entities;
+			name = "Runtime Entities";
 			sourceTree = "<group>";
 		};
 		C7CAD92513A60F9B0024ADCE /* Additions */ = {
@@ -188,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				C7CAD92513A60F9B0024ADCE /* Additions */,
-				C78C468413A3B6AE001E58D7 /* Entities */,
+				C78C468413A3B6AE001E58D7 /* Runtime Entities */,
 				C7E3811313A27DF700758C3D /* View Controllers */,
 				C7DCC6B813A27238009B84CC /* CBAppDelegate.h */,
 				C7DCC6B913A27238009B84CC /* CBAppDelegate.m */,
@@ -323,7 +318,6 @@
 				C7E3811F13A2B10E00758C3D /* CBClassListViewController.m in Sources */,
 				C78C468313A3B65A001E58D7 /* CBClass.m in Sources */,
 				C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */,
-				C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */,
 				C7ED4DE013A49A5D0066B411 /* CBSectionedListViewController.m in Sources */,
 				C7ED4DE413A4A5CE0066B411 /* CBFrameworkDetailsViewController.m in Sources */,
 				C7D2E55A13A4BF7800AAD04C /* CBClassDetailsViewController.m in Sources */,

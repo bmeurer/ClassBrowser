@@ -25,44 +25,130 @@
  * SUCH DAMAGE.
  */
 
-#import "CBRuntime.h"
+#import "CBClass.h"
+#import "CBFramework.h"
+
+
+static CBFramework *CBFrameworkHashTable[227] = { NULL, };
+
+static unsigned CBFrameworkHash(NSBundle *bundle)
+{
+    // The two least significant bits are meaningless due to pointer alignment
+    return ((size_t)bundle >> 2) % (sizeof(CBFrameworkHashTable) / sizeof(*CBFrameworkHashTable));
+}
 
 
 @implementation CBFramework
 
-@synthesize bundle = _bundle;
-@synthesize classes = _classes;
-@synthesize name = _name;
-
-- (id)init
++ (void)initialize
 {
-    return [self initWithBundle:nil];
+    NSAssert(self == [CBFramework class], @"You must not subclass CBFramework!");
+    
+#if !TARGET_IPHONE_SIMULATOR
+    // Forcibly load all frameworks in the Library/Frameworks/ directories of the system domain
+    for (NSString *libraryDirectoryPath in NSSearchPathForDirectoriesInDomains(NSAllLibrariesDirectory, NSSystemDomainMask, NO)) {
+        NSString *frameworksDirectoryPath = [libraryDirectoryPath stringByAppendingPathComponent:@"Frameworks"];
+        for (NSString *fileName in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:frameworksDirectoryPath error:NULL]) {
+            NSAutoreleasePool *pool = [NSAutoreleasePool new];
+            [[NSBundle bundleWithPath:[frameworksDirectoryPath stringByAppendingPathComponent:fileName]] load];
+            [pool release];
+        }
+    }
+#endif
 }
 
-- (id)initWithBundle:(NSBundle *)bundle
++ (NSArray *)registeredFrameworks
 {
-    self = [super init];
-    if (self) {
-        _bundle = [bundle retain];
+    static NSArray *allFrameworks = nil;
+    if (!allFrameworks) {
+        NSArray *const bundles = [NSBundle allFrameworks];
+        NSBundle *const mainBundle = [NSBundle mainBundle];
+        NSMutableArray *frameworks = [[NSMutableArray alloc] initWithCapacity:[bundles count]];
+        for (NSBundle *bundle in bundles) {
+            if (bundle != mainBundle) {
+                [frameworks addObject:[self frameworkWithBundle:bundle]];
+            }
+        }
+        allFrameworks = [frameworks copy];
+        [frameworks release];
+    }
+    return allFrameworks;
+}
+
++ (CBFramework *)frameworkWithBundle:(NSBundle *)aBundle
+{
+    CBFramework *framework;
+    CBFramework **fp = &CBFrameworkHashTable[CBFrameworkHash(aBundle)];
+    for (framework = *fp; framework; framework = framework->_next) {
+        if (framework->_bundle == aBundle) {
+            break;
+        }
+    }
+    if (!framework && aBundle && aBundle != [NSBundle mainBundle]) {
+        framework = [[self alloc] init];
+        if (framework) {
+            framework->_bundle = [aBundle retain];
+            framework->_next = *fp;
+            *fp = framework;
+        }
+    }
+    return framework;
+}
+
+- (id)initWithBundle:(NSBundle *)aBundle
+{
+    if (aBundle && aBundle != [NSBundle mainBundle]) {
+        CBFramework **fp = &CBFrameworkHashTable[CBFrameworkHash(aBundle)];
+        for (CBFramework *framework = *fp; framework; framework = framework->_next) {
+            if (framework->_bundle == aBundle) {
+                [self release];
+                return framework;
+            }
+        }
+        self = [self init];
+        if (self) {
+            self->_bundle = [aBundle retain];
+            self->_next = *fp;
+            *fp = self;
+        }
+    }
+    else {
+        [self release];
+        self = nil;
     }
     return self;
 }
 
-- (void)dealloc
+- (id)retain
 {
-    [_bundle release];
-    [_classes release];
-    [_name release];
-    [super dealloc];
+    return self;
+}
+
+- (NSUInteger)retainCount
+{
+    return NSUIntegerMax;
+}
+
+- (void)release
+{
+}
+
+- (id)autorelease
+{
+    return self;
+}
+
+- (NSBundle *)bundle
+{
+    return _bundle;
 }
 
 - (NSArray *)classes
 {
     if (!_classes) {
-        NSString *bundleIdentifier = [self.bundle bundleIdentifier];
         NSMutableArray *classes = [[NSMutableArray alloc] init];
-        for (CBClass *class in [[CBRuntime sharedRuntime] allClasses]) {
-            if ([bundleIdentifier isEqualToString:[class.bundle bundleIdentifier]]) {
+        for (CBClass *class in [CBClass registeredClasses]) {
+            if ([class framework] == self) {
                 [classes addObject:class];
             }
         }
@@ -75,14 +161,9 @@
 - (NSString *)name
 {
     if (!_name) {
-        _name = [([self.bundle objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey] ?: [[[self.bundle bundlePath] lastPathComponent] stringByDeletingPathExtension]) copy];
+        _name = [([_bundle objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey] ?: [[[_bundle bundlePath] lastPathComponent] stringByDeletingPathExtension]) copy];
     }
     return _name;
-}
-
-+ (CBFramework *)frameworkWithBundleIdentifier:(NSString *)aBundleIdentifier
-{
-    return aBundleIdentifier ? [[CBRuntime sharedRuntime]->_frameworks objectForKey:aBundleIdentifier] : nil;
 }
 
 @end

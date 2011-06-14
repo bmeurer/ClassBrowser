@@ -28,14 +28,21 @@
 #import <Foundation/Foundation.h>
 
 
-@interface CBFramework : NSObject
+@interface CBFramework : NSObject {
+@private
+    CBFramework *_next;
+    NSBundle    *_bundle;
+    NSArray     *_classes;
+    NSString    *_name;
+}
 
-- (id)initWithBundle:(NSBundle *)bundle;
++ (NSArray *)registeredFrameworks;
++ (CBFramework *)frameworkWithBundle:(NSBundle *)aBundle;
 
-@property (nonatomic, readonly) NSBundle *bundle;
-@property (nonatomic, readonly) NSArray *classes;
-@property (nonatomic, readonly) NSString *name;
+- (id)initWithBundle:(NSBundle *)aBundle;
 
-+ (CBFramework *)frameworkWithBundleIdentifier:(NSString *)aBundleIdentifier;
+- (NSBundle *)bundle;
+- (NSArray *)classes;
+- (NSString *)name;
 
 @end

@@ -27,11 +27,12 @@
 
 #import "UILabel+BMRoundedRectAdditions.h"
 
+#import "CBClass.h"
 #import "CBClassListViewController.h"
 #import "CBFrameworkListViewController.h"
+#import "CBProtocol.h"
 #import "CBProtocolListViewController.h"
 #import "CBRootViewController.h"
-#import "CBRuntime.h"
 
 
 @implementation CBRootViewController
@@ -94,7 +95,7 @@
     switch (indexPath.section) {
         case 0:
         {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[[CBRuntime sharedRuntime] allFrameworks] count]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBFramework registeredFrameworks] count]];
             cell.imageView.image = [UIImage imageNamed:@"frameworks"];
             cell.textLabel.text = @"Frameworks";
             break;
@@ -104,13 +105,13 @@
         {
             switch (indexPath.row) {
                 case 0:
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[[CBRuntime sharedRuntime] allClasses] count]];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBClass registeredClasses] count]];
                     cell.imageView.image = [UIImage imageNamed:@"classes"];
                     cell.textLabel.text = @"Classes";
                     break;
                     
                 case 1:
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[[CBRuntime sharedRuntime] allProtocols] count]];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBProtocol registeredProtocols] count]];
                     cell.imageView.image = [UIImage imageNamed:@"protocols"];
                     cell.textLabel.text = @"Protocols";
                     break;
@@ -150,7 +151,7 @@
                     case 0: // Frameworks
                     {
                         CBFrameworkListViewController *frameworkListViewController = [[CBFrameworkListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
-                        frameworkListViewController.objects = [[CBRuntime sharedRuntime] allFrameworks];
+                        frameworkListViewController.objects = [CBFramework registeredFrameworks];
                         frameworkListViewController.title = @"Frameworks";
                         [self.navigationController pushViewController:frameworkListViewController animated:YES];
                         [frameworkListViewController release];
@@ -166,7 +167,7 @@
                     case 0: // Classes
                     {
                         CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
-                        classListViewController.objects = [[CBRuntime sharedRuntime] allClasses];
+                        classListViewController.objects = [CBClass registeredClasses];
                         classListViewController.title = @"Classes";
                         [self.navigationController pushViewController:classListViewController animated:YES];
                         [classListViewController release];
@@ -176,7 +177,7 @@
                     case 1: // Protocols
                     {
                         CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
-                        protocolListViewController.objects = [[CBRuntime sharedRuntime] allProtocols];
+                        protocolListViewController.objects = [CBProtocol registeredProtocols];
                         protocolListViewController.title = @"Protocols";
                         [self.navigationController pushViewController:protocolListViewController animated:YES];
                         [protocolListViewController release];

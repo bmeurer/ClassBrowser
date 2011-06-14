@@ -32,6 +32,11 @@
 
 @synthesize name = _name;
 
++ (CBMethod *)methodWithMethod:(Method)aMethod
+{
+    return [[[self alloc] initWithMethod:aMethod] autorelease];
+}
+
 - (id)init
 {
     return [self initWithMethod:NULL];

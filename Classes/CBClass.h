@@ -25,31 +25,38 @@
  * SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
+#import "CBFramework.h"
 
-
-@class CBFramework;
 
 @interface CBClass : NSObject {
 @private
-    Class _klass;
+    CBClass     *_next;
+    Class        _class;
+    CBFramework *_framework;
+    NSString    *_name;
+    NSArray     *_methods;
+    NSArray     *_subClasses;
 }
+
++ (NSArray *)registeredClasses;
++ (CBClass *)classWithClass:(Class)aClass;
 
 - (id)initWithClass:(Class)aClass;
 
-@property (nonatomic, readonly) NSBundle *bundle;
-@property (nonatomic, readonly) NSArray *methods;
-@property (nonatomic, readonly) NSString *name;
+- (CBFramework *)framework;
+- (NSString *)name;
+- (NSUInteger)instanceSize;
+- (NSInteger)version;
 
-@property (nonatomic, readonly) CBFramework *framework;
-@property (nonatomic, readonly) size_t instanceSize;
-@property (nonatomic, readonly) NSArray *subClasses;
-@property (nonatomic, readonly) CBClass *superClass;
-@property (nonatomic, readonly) int version;
+- (NSArray *)methods;
+
+- (BOOL)isSubClassOfClass:(CBClass *)aClass;
+- (NSArray *)subClasses;
+
+- (BOOL)isSuperClassOfClass:(CBClass *)aClass;
+- (CBClass *)superClass;
 
 - (NSSet *)protocols;
 - (NSSet *)allProtocols;
-
-+ (CBClass *)classWithName:(NSString *)aName;
 
 @end

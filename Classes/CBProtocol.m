@@ -25,47 +25,130 @@
  * SUCH DAMAGE.
  */
 
-#import "CBRuntime.h"
+#import "CBFramework.h"
+#import "CBProtocol.h"
+
+
+static CBProtocol *CBProtocolHashTable[727] = { NULL, };
+
+static unsigned CBProtocolHash(Protocol *protocol)
+{
+    // The two least significant bits are meaningless due to pointer alignment
+    return ((size_t)protocol >> 2) % (sizeof(CBProtocolHashTable) / sizeof(*CBProtocolHashTable));
+}
 
 
 @implementation CBProtocol
 
-@synthesize name = _name;
-
-- (id)init
++ (void)initialize
 {
-    return [self initWithProtocol:nil];
+    NSAssert(self == [CBProtocol class], @"You must not subclass CBProtocol");
+    
+    // Forcibly trigger initialization of CBFramework to make
+    // sure that all frameworks are loaded into this process
+    [CBFramework self];
+}
+
++ (NSArray *)registeredProtocols
+{
+    static NSArray *registeredProtocols = nil;
+    if (!registeredProtocols) {
+        unsigned i, j, protocolCount = 0;
+        Protocol **protocolList = objc_copyProtocolList(&protocolCount);
+        for (i = j = 0; i < protocolCount; ++i) {
+            CBProtocol *protocol = [self protocolWithProtocol:protocolList[i]];
+            if (protocol) {
+                protocolList[j++] = (Protocol *)protocol;
+            }
+        }
+        registeredProtocols = [[NSArray alloc] initWithObjects:(const id *)protocolList count:j];
+        free(protocolList);
+    }
+    return registeredProtocols;
+}
+
++ (CBProtocol *)protocolWithProtocol:(Protocol *)aProtocol
+{
+    CBProtocol *protocol;
+    CBProtocol **pp = &CBProtocolHashTable[CBProtocolHash(aProtocol)];
+    for (protocol = *pp; protocol; protocol = protocol->_next) {
+        if (protocol->_protocol == aProtocol) {
+            break;
+        }
+    }
+    if (!protocol && aProtocol) {
+        protocol = [[self alloc] init];
+        if (protocol) {
+            protocol->_protocol = aProtocol;
+            protocol->_next = *pp;
+            *pp = protocol;
+        }
+    }
+    return protocol;
 }
 
 - (id)initWithProtocol:(Protocol *)aProtocol
 {
-    self = [super init];
-    if (self) {
-        _name = [NSStringFromProtocol(aProtocol) retain];
-        if (!_name) {
-            [self release];
-            return nil;
+    if (aProtocol) {
+        CBProtocol **pp = &CBProtocolHashTable[CBProtocolHash(aProtocol)];
+        for (CBProtocol *protocol = *pp; protocol; protocol = protocol->_next) {
+            if (protocol->_protocol == aProtocol) {
+                [self release];
+                return protocol;
+            }
         }
-        _protocol = aProtocol;
+        self = [self init];
+        if (self) {
+            self->_protocol = aProtocol;
+            self->_next = *pp;
+            *pp = self;
+        }
     }
+    else {
+        [self release];
+        self = nil;
+    }
+    return nil;
+}
+
+- (id)retain
+{
     return self;
 }
 
-- (void)dealloc
+- (NSUInteger)retainCount
 {
-    [_name release];
-    [super dealloc];
+    return NSUIntegerMax;
+}
+
+- (void)release
+{
+}
+
+- (id)autorelease
+{
+    return self;
 }
 
 - (BOOL)isEqual:(id)anObject
 {
     return ([anObject isMemberOfClass:[CBProtocol class]]
-            && [[self name] isEqualToString:[anObject name]]);
+            && _protocol == ((CBProtocol *)anObject)->_protocol);
 }
 
 - (NSUInteger)hash
 {
-    return [[self name] hash];
+    // The two least significant bits are
+    // meaningless due to pointer alignment
+    return (size_t)_protocol >> 2;
+}
+
+- (NSString *)name
+{
+    if (!_name) {
+        _name = [NSStringFromProtocol(_protocol) copy];
+    }
+    return _name;
 }
 
 - (NSSet *)protocols
@@ -73,17 +156,29 @@
     unsigned i, j, protocolCount = 0;
     Protocol **protocolList = protocol_copyProtocolList(_protocol, &protocolCount);
     for (i = j = 0; i < protocolCount; ++i) {
-        CBProtocol *protocol = [[CBProtocol alloc] initWithProtocol:protocolList[i]];
+        CBProtocol *protocol = [CBProtocol protocolWithProtocol:protocolList[i]];
         if (protocol) {
             protocolList[j++] = (Protocol *)protocol;
         }
     }
     NSSet *protocols = [NSSet setWithObjects:(id *)protocolList count:j];
-    while (j > 0) {
-        [(id)protocolList[--j] release];
-    }
     free(protocolList);
     return protocols;
+}
+
+- (NSSet *)allProtocols
+{
+    NSSet *allProtocols = [self protocols];
+    for (NSSet *protocols;; ) {
+        protocols = allProtocols;
+        for (CBProtocol *protocol in protocols) {
+            allProtocols = [allProtocols setByAddingObjectsFromSet:[protocol protocols]];
+        }
+        if ([allProtocols isEqualToSet:protocols]) {
+            break;
+        }
+    }
+    return allProtocols;
 }
 
 @end

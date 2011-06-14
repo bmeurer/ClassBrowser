@@ -25,8 +25,6 @@
  * SUCH DAMAGE.
  */
 
-#import "CBRuntime.h"
-
 #import "CBClassDetailsViewController.h"
 #import "CBClassListViewController.h"
 #import "CBMethodListViewController.h"

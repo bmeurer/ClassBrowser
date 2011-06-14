@@ -25,18 +25,26 @@
  * SUCH DAMAGE.
  */
 
+#include <objc/runtime.h>
+
 #import <Foundation/Foundation.h>
 
 
 @interface CBProtocol : NSObject {
 @private
-    Protocol *_protocol;
+    CBProtocol *_next;
+    Protocol   *_protocol;
+    NSString   *_name;
 }
+
++ (NSArray *)registeredProtocols;
++ (CBProtocol *)protocolWithProtocol:(Protocol *)aProtocol;
 
 - (id)initWithProtocol:(Protocol *)aProtocol;
 
-@property (nonatomic, readonly) NSString *name;
+- (NSString *)name;
 
 - (NSSet *)protocols;
+- (NSSet *)allProtocols;
 
 @end

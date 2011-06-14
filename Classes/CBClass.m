@@ -25,127 +25,216 @@
  * SUCH DAMAGE.
  */
 
-#include <objc/runtime.h>
+#import "CBClass.h"
+#import "CBMethod.h"
+#import "CBProtocol.h"
 
-#import "CBRuntime.h"
+
+static CBClass *CBClassHashTable[7457] = { NULL, };
+
+static unsigned CBClassHash(Class class)
+{
+    // The two least significant bits are meaningless due to pointer alignment
+    return ((size_t)class >> 2) % (sizeof(CBClassHashTable) / sizeof(*CBClassHashTable));
+}
 
 
 @implementation CBClass
 
-@synthesize bundle = _bundle;
-@synthesize methods = _methods;
-@synthesize name = _name;
-
-@dynamic framework;
-@dynamic instanceSize;
-@dynamic subClasses;
-@dynamic superClass;
-@dynamic version;
-
-- (id)init
++ (void)initialize
 {
-    return [self initWithClass:Nil];
+    NSAssert(self == [CBClass class], @"You must not subclass CBClass");
+    
+    // Forcibly trigger initialization of CBFramework to make
+    // sure that all frameworks are loaded into this process
+    [CBFramework self];
+}
+
++ (NSArray *)registeredClasses
+{
+    static NSArray *registeredClasses = nil;
+    if (!registeredClasses) {
+        unsigned i, j, classCount = 0;
+        Class *const classList = objc_copyClassList(&classCount);
+        for (i = j = 0; i < classCount; ++i) {
+            CBClass *const class = [self classWithClass:classList[i]];
+            if (class && [class framework]) {
+                classList[j++] = (Class)class;
+            }
+        }
+        registeredClasses = [[NSArray alloc] initWithObjects:(const id *)classList count:j];
+        free(classList);
+    }
+    return registeredClasses;
+}
+
++ (CBClass *)classWithClass:(Class)aClass
+{
+    CBClass *class;
+    CBClass **cp = &CBClassHashTable[CBClassHash(aClass)];
+    for (class = *cp; class; class = class->_next) {
+        if (class->_class == aClass) {
+            break;
+        }
+    }
+    if (!class && aClass) {
+        class = [[self alloc] init];
+        if (class) {
+            class->_class = aClass;
+            class->_next = *cp;
+            *cp = class;
+        }
+    }
+    return class;
 }
 
 - (id)initWithClass:(Class)aClass
 {
-    self = [super init];
-    if (self) {
-        _name = [NSStringFromClass(aClass) retain];
-        if (!_name) {
-            [self release];
-            return nil;
+    if (aClass) {
+        CBClass **cp = &CBClassHashTable[CBClassHash(aClass)];
+        for (CBClass *class = *cp; class; class = class->_next) {
+            if (class->_class == aClass) {
+                [self release];
+                return class;
+            }
         }
-        _klass = aClass;
+        self = [self init];
+        if (self) {
+            self->_class = aClass;
+            self->_next = *cp;
+            *cp = self;
+        }
     }
+    else {
+        [self release];
+        self = nil;
+    }
+    return nil;
+}
+
+- (id)retain
+{
     return self;
 }
 
-- (void)dealloc
+- (NSUInteger)retainCount
 {
-    [_bundle release];
-    [_methods release];
-    [_name release];
-    [super dealloc];
+    return NSUIntegerMax;
 }
 
-- (NSBundle *)bundle
+- (void)release
 {
-    if (!_bundle) {
-        _bundle = [NSBundle bundleForClass:_klass];
+}
+
+- (id)autorelease
+{
+    return self;
+}
+
+- (BOOL)isEqual:(id)anObject
+{
+    return ([anObject isMemberOfClass:[CBClass class]]
+            && _class == ((CBClass *)anObject)->_class);
+}
+
+- (NSUInteger)hash
+{
+    // The two least significant bits are
+    // meaningless due to pointer alignment
+    return (size_t)_class >> 2;
+}
+
+- (CBFramework *)framework
+{
+    if (!_framework) {
+        _framework = [CBFramework frameworkWithBundle:[NSBundle bundleForClass:_class]];
     }
-    return _bundle;
+    return _framework;
+}
+
+- (NSString *)name
+{
+    if (!_name) {
+        _name = [NSStringFromClass(_class) copy];
+    }
+    return _name;
+}
+
+- (NSUInteger)instanceSize
+{
+    return class_getInstanceSize(_class);
+}
+
+- (NSInteger)version
+{
+    return class_getVersion(_class);
+}
+
+- (BOOL)isSubClassOfClass:(CBClass *)aClass
+{
+    return [aClass isSuperClassOfClass:self];
+}
+
+- (NSArray *)subClasses
+{
+    if (!_subClasses) {
+        NSMutableArray *subClasses = [[NSMutableArray alloc] init];
+        for (CBClass *class in [[self class] registeredClasses]) {
+            if ([self isSuperClassOfClass:class]) {
+                [subClasses addObject:class];
+            }
+        }
+        _subClasses = [subClasses copy];
+        [subClasses release];
+    }
+    return _subClasses;
+}
+
+- (BOOL)isSuperClassOfClass:(CBClass *)aClass
+{
+    for (Class class = aClass ? aClass->_class : Nil; class; class = class_getSuperclass(class)) {
+        if (class == _class) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (CBClass *)superClass
+{
+    return [CBClass classWithClass:class_getSuperclass(_class)];
 }
 
 - (NSArray *)methods
 {
     if (!_methods) {
         unsigned i, j, methodCount = 0;
-        Method *methods = class_copyMethodList(_klass, &methodCount);
+        Method *methods = class_copyMethodList(_class, &methodCount);
         if (methods) {
             for (i = j = 0; i < methodCount; ++i) {
-                id method = [[CBMethod alloc] initWithMethod:methods[i]];
+                CBMethod *method = [CBMethod methodWithMethod:methods[i]];
                 if (method) {
                     methods[j++] = (Method)method;
                 }
             }
             _methods = [[NSArray alloc] initWithObjects:(const id *)methods count:j];
-            while (j != 0) {
-                [(id)methods[--j] release];
-            }
             free(methods);
         }
     }
     return _methods;
 }
 
-- (CBFramework *)framework
-{
-    return [CBFramework frameworkWithBundleIdentifier:[self.bundle bundleIdentifier]];
-}
-
-- (size_t)instanceSize
-{
-    return class_getInstanceSize(_klass);
-}
-
-- (NSArray *)subClasses
-{
-    NSMutableArray *subClasses = [NSMutableArray array];
-    for (CBClass *class in [[CBRuntime sharedRuntime] allClasses]) {
-        if (class_getSuperclass(class->_klass) == _klass) {
-            [subClasses addObject:class];
-        }
-    }
-    return subClasses;
-}
-
-- (CBClass *)superClass
-{
-    return [[self class] classWithName:NSStringFromClass(class_getSuperclass(_klass))];
-}
-
-- (int)version
-{
-    return class_getVersion(_klass);
-}
-
-#pragma mark - Access to protocols
-
 - (NSSet *)protocols
 {
     unsigned i, j, protocolCount = 0;
-    Protocol **protocolList = class_copyProtocolList(_klass, &protocolCount);
+    Protocol **protocolList = class_copyProtocolList(_class, &protocolCount);
     for (i = j = 0; i < protocolCount; ++i) {
-        CBProtocol *protocol = [[CBProtocol alloc] initWithProtocol:protocolList[i]];
+        CBProtocol *protocol = [CBProtocol protocolWithProtocol:protocolList[i]];
         if (protocol) {
             protocolList[j++] = (Protocol *)protocol;
         }
     }
     NSSet *protocols = [NSSet setWithObjects:(id *)protocolList count:j];
-    while (j > 0) {
-        [(id)protocolList[--j] release];
-    }
     free(protocolList);
     return protocols;
 }
@@ -170,13 +259,6 @@
         }
     }
     return allProtocols;
-}
-
-#pragma mark - Class methods
-
-+ (CBClass *)classWithName:(NSString *)aName
-{
-    return aName ? [[CBRuntime sharedRuntime]->_classes objectForKey:aName] : nil;
 }
 
 @end
