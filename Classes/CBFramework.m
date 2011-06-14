@@ -138,6 +138,19 @@ static unsigned CBFrameworkHash(NSBundle *bundle)
     return self;
 }
 
+- (BOOL)isEqual:(id)anObject
+{
+    return ([anObject isMemberOfClass:[CBFramework class]]
+            && _bundle == ((CBFramework *)anObject)->_bundle);
+}
+
+- (NSUInteger)hash
+{
+    // The two least significant bits are
+    // meaningless due to pointer alignment
+    return (size_t)_bundle >> 2;
+}
+
 - (NSBundle *)bundle
 {
     return _bundle;
