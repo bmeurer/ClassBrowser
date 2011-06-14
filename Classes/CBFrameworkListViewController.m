@@ -68,7 +68,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CBFramework *framework = [self tableView:tableView objectForRowAtIndexPath:indexPath];
-    CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"ClassListViewController" bundle:nil];
+    CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
     classListViewController.objects = framework.classes;
     classListViewController.title = framework.name;
     [self.navigationController pushViewController:classListViewController animated:YES];

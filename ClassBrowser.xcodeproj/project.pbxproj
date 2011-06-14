@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C714FC8713A6718C002C2CDF /* CBProtocolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */; };
-		C714FC8813A6718C002C2CDF /* ProtocolListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C714FC8613A6718C002C2CDF /* ProtocolListViewController.xib */; };
 		C78C468313A3B65A001E58D7 /* CBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468213A3B65A001E58D7 /* CBClass.m */; };
 		C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468613A3B6D6001E58D7 /* CBFramework.m */; };
 		C78C468A13A3B847001E58D7 /* CBRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468913A3B847001E58D7 /* CBRuntime.m */; };
@@ -26,7 +25,6 @@
 		C7CF077413A4D341008B3BA0 /* ClassDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D2E55713A4BF7700AAD04C /* ClassDetailsViewController.xib */; };
 		C7CF077713A4E98A008B3BA0 /* CBMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CF077613A4E98A008B3BA0 /* CBMethod.m */; };
 		C7CF077B13A4ED7B008B3BA0 /* CBMethodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CF077913A4ED7A008B3BA0 /* CBMethodListViewController.m */; };
-		C7CF077E13A4EE15008B3BA0 /* MethodListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CF077D13A4EE15008B3BA0 /* MethodListViewController.xib */; };
 		C7CF078013A4F24F008B3BA0 /* method.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CF077F13A4F24F008B3BA0 /* method.png */; };
 		C7D2E55A13A4BF7800AAD04C /* CBClassDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D2E55813A4BF7800AAD04C /* CBClassDetailsViewController.m */; };
 		C7DCC6AA13A27238009B84CC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7DCC6A913A27238009B84CC /* UIKit.framework */; };
@@ -36,10 +34,9 @@
 		C7DCC6BA13A27238009B84CC /* CBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DCC6B913A27238009B84CC /* CBAppDelegate.m */; };
 		C7DCC6D913A27522009B84CC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DCC6D813A27522009B84CC /* MainWindow.xib */; };
 		C7E3811113A27DD300758C3D /* CBFrameworkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */; };
-		C7E3811513A27E1500758C3D /* FrameworkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */; };
 		C7E3811B13A2ABAB00758C3D /* framework.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811A13A2ABAB00758C3D /* framework.png */; };
 		C7E3811F13A2B10E00758C3D /* CBClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */; };
-		C7E3812013A2B10E00758C3D /* ClassListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */; };
+		C7E3812013A2B10E00758C3D /* SectionedListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E3811E13A2B10E00758C3D /* SectionedListViewController.xib */; };
 		C7E3812213A2B2E600758C3D /* class.png in Resources */ = {isa = PBXBuildFile; fileRef = C7E3812113A2B2E600758C3D /* class.png */; };
 		C7ED4DE013A49A5D0066B411 /* CBSectionedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ED4DDF13A49A5D0066B411 /* CBSectionedListViewController.m */; };
 		C7ED4DE413A4A5CE0066B411 /* CBFrameworkDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */; };
@@ -49,7 +46,6 @@
 /* Begin PBXFileReference section */
 		C714FC8413A6718C002C2CDF /* CBProtocolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBProtocolListViewController.h; sourceTree = "<group>"; };
 		C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBProtocolListViewController.m; sourceTree = "<group>"; };
-		C714FC8613A6718C002C2CDF /* ProtocolListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProtocolListViewController.xib; sourceTree = "<group>"; };
 		C78C468113A3B65A001E58D7 /* CBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClass.h; sourceTree = "<group>"; };
 		C78C468213A3B65A001E58D7 /* CBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClass.m; sourceTree = "<group>"; };
 		C78C468513A3B6D6001E58D7 /* CBFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFramework.h; sourceTree = "<group>"; };
@@ -75,7 +71,6 @@
 		C7CF077613A4E98A008B3BA0 /* CBMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMethod.m; sourceTree = "<group>"; };
 		C7CF077813A4ED7A008B3BA0 /* CBMethodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMethodListViewController.h; sourceTree = "<group>"; };
 		C7CF077913A4ED7A008B3BA0 /* CBMethodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMethodListViewController.m; sourceTree = "<group>"; };
-		C7CF077D13A4EE15008B3BA0 /* MethodListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MethodListViewController.xib; sourceTree = "<group>"; };
 		C7CF077F13A4F24F008B3BA0 /* method.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = method.png; sourceTree = "<group>"; };
 		C7D2E55713A4BF7700AAD04C /* ClassDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassDetailsViewController.xib; sourceTree = "<group>"; };
 		C7D2E55813A4BF7800AAD04C /* CBClassDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClassDetailsViewController.m; sourceTree = "<group>"; };
@@ -91,11 +86,10 @@
 		C7DCC6D813A27522009B84CC /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		C7E3810F13A27DD300758C3D /* CBFrameworkListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFrameworkListViewController.h; sourceTree = "<group>"; };
 		C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBFrameworkListViewController.m; sourceTree = "<group>"; };
-		C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FrameworkListViewController.xib; sourceTree = "<group>"; };
 		C7E3811A13A2ABAB00758C3D /* framework.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = framework.png; sourceTree = "<group>"; };
 		C7E3811C13A2B10E00758C3D /* CBClassListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClassListViewController.h; sourceTree = "<group>"; };
 		C7E3811D13A2B10E00758C3D /* CBClassListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClassListViewController.m; sourceTree = "<group>"; };
-		C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassListViewController.xib; sourceTree = "<group>"; };
+		C7E3811E13A2B10E00758C3D /* SectionedListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionedListViewController.xib; sourceTree = "<group>"; };
 		C7E3812113A2B2E600758C3D /* class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = class.png; sourceTree = "<group>"; };
 		C7ED4DDE13A49A5D0066B411 /* CBSectionedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSectionedListViewController.h; sourceTree = "<group>"; };
 		C7ED4DDF13A49A5D0066B411 /* CBSectionedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSectionedListViewController.m; sourceTree = "<group>"; };
@@ -217,13 +211,10 @@
 			children = (
 				C7CAD93D13A6685E0024ADCE /* Images */,
 				C7D2E55713A4BF7700AAD04C /* ClassDetailsViewController.xib */,
-				C7E3811E13A2B10E00758C3D /* ClassListViewController.xib */,
 				C7ED4DE313A4A5CE0066B411 /* FrameworkDetailsViewController.xib */,
-				C7E3811413A27E1500758C3D /* FrameworkListViewController.xib */,
 				C7DCC6D813A27522009B84CC /* MainWindow.xib */,
-				C7CF077D13A4EE15008B3BA0 /* MethodListViewController.xib */,
-				C714FC8613A6718C002C2CDF /* ProtocolListViewController.xib */,
 				C7CAD91B13A52C170024ADCE /* RootViewController.xib */,
+				C7E3811E13A2B10E00758C3D /* SectionedListViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -302,13 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7CF077413A4D341008B3BA0 /* ClassDetailsViewController.xib in Resources */,
-				C7E3812013A2B10E00758C3D /* ClassListViewController.xib in Resources */,
+				C7E3812013A2B10E00758C3D /* SectionedListViewController.xib in Resources */,
 				C7ED4DE513A4A5CE0066B411 /* FrameworkDetailsViewController.xib in Resources */,
-				C7E3811513A27E1500758C3D /* FrameworkListViewController.xib in Resources */,
 				C7DCC6D913A27522009B84CC /* MainWindow.xib in Resources */,
 				C7E3812213A2B2E600758C3D /* class.png in Resources */,
 				C7E3811B13A2ABAB00758C3D /* framework.png in Resources */,
-				C7CF077E13A4EE15008B3BA0 /* MethodListViewController.xib in Resources */,
 				C7CF078013A4F24F008B3BA0 /* method.png in Resources */,
 				C7CAD91D13A52C170024ADCE /* RootViewController.xib in Resources */,
 				C7CAD91F13A52EB90024ADCE /* frameworks.png in Resources */,
@@ -318,7 +307,6 @@
 				C7CAD93A13A6684C0024ADCE /* methods.png in Resources */,
 				C7CAD93B13A6684C0024ADCE /* properties.png in Resources */,
 				C7CAD93C13A6684C0024ADCE /* protocols.png in Resources */,
-				C714FC8813A6718C002C2CDF /* ProtocolListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

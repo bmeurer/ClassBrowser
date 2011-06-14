@@ -166,7 +166,7 @@
             switch (indexPath.row) {
                 case 1: // Protocols
                 {
-                    CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"ProtocolListViewController" bundle:nil];
+                    CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
                     protocolListViewController.objects = [[self.clazz allProtocols] allObjects];
                     protocolListViewController.title = @"Protocols";
                     [self.navigationController pushViewController:protocolListViewController animated:YES];

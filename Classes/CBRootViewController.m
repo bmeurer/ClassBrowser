@@ -149,7 +149,7 @@
                 switch (indexPath.row) {
                     case 0: // Frameworks
                     {
-                        CBFrameworkListViewController *frameworkListViewController = [[CBFrameworkListViewController alloc] initWithNibName:@"FrameworkListViewController" bundle:nil];
+                        CBFrameworkListViewController *frameworkListViewController = [[CBFrameworkListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
                         frameworkListViewController.objects = [[CBRuntime sharedRuntime] allFrameworks];
                         frameworkListViewController.title = @"Frameworks";
                         [self.navigationController pushViewController:frameworkListViewController animated:YES];
@@ -165,7 +165,7 @@
                 switch (indexPath.row) {
                     case 0: // Classes
                     {
-                        CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"ClassListViewController" bundle:nil];
+                        CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
                         classListViewController.objects = [[CBRuntime sharedRuntime] allClasses];
                         classListViewController.title = @"Classes";
                         [self.navigationController pushViewController:classListViewController animated:YES];
@@ -175,7 +175,7 @@
                         
                     case 1: // Protocols
                     {
-                        CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"ProtocolListViewController" bundle:nil];
+                        CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
                         protocolListViewController.objects = [[CBRuntime sharedRuntime] allProtocols];
                         protocolListViewController.title = @"Protocols";
                         [self.navigationController pushViewController:protocolListViewController animated:YES];

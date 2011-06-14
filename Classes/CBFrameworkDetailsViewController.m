@@ -172,7 +172,7 @@
                 switch (indexPath.row) {
                     case 0: // Classes
                     {
-                        CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"ClassListViewController" bundle:nil];
+                        CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
                         classListViewController.objects = self.framework.classes;
                         classListViewController.title = self.framework.name;
                         [self.navigationController pushViewController:classListViewController animated:YES];

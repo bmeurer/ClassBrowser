@@ -66,7 +66,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CBClass *class = [self tableView:tableView objectForRowAtIndexPath:indexPath];
-    CBMethodListViewController *methodListViewController = [[CBMethodListViewController alloc] initWithNibName:@"MethodListViewController" bundle:nil];
+    CBMethodListViewController *methodListViewController = [[CBMethodListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
     methodListViewController.objects = class.methods;
     methodListViewController.title = class.name;
     [self.navigationController pushViewController:methodListViewController animated:YES];
