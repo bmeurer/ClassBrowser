@@ -41,7 +41,7 @@
 /**
  * Code block to execute when the "Info" button is activated.
  */
-@property (nonatomic, copy) void (^infoBlock)();
+@property (nonatomic, copy) void (^infoBlock)(CBSectionedListViewController *);
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *infoButtonItem;
 - (IBAction)infoButtonItemDidActivate:(UIBarButtonItem *)infoButtonItem;
 

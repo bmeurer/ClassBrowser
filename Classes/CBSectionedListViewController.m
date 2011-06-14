@@ -58,9 +58,9 @@
 
 - (IBAction)infoButtonItemDidActivate:(UIBarButtonItem *)infoButtonItem
 {
-    void (^infoBlock)() = self.infoBlock;
+    void (^infoBlock)(CBSectionedListViewController *) = self.infoBlock;
     if (infoBlock) {
-        infoBlock();
+        infoBlock(self);
     }
 }
 
