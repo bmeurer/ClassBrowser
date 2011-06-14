@@ -28,6 +28,7 @@
 #import "UILabel+BMRoundedRectAdditions.h"
 
 #import "CBClassDetailsViewController.h"
+#import "CBClassListViewController.h"
 #import "CBProtocolListViewController.h"
 
 
@@ -176,7 +177,11 @@
                     
                 case 2: // Subclasses
                 {
-                    // TODO
+                    CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
+                    classListViewController.objects = [self.clazz subClasses];
+                    classListViewController.title = @"Subclasses";
+                    [self.navigationController pushViewController:classListViewController animated:YES];
+                    [classListViewController release];
                     break;
                 }
             }
