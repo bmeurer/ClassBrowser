@@ -67,6 +67,13 @@
 {
     CBClass *class = [self tableView:tableView objectForRowAtIndexPath:indexPath];
     CBMethodListViewController *methodListViewController = [[CBMethodListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
+    methodListViewController.infoBlock = ^(CBSectionedListViewController *sectionedListViewController){
+        CBClassDetailsViewController *classDetailsViewController = [[CBClassDetailsViewController alloc] initWithNibName:@"ClassDetailsViewController" bundle:nil];
+        classDetailsViewController.clazz = class;
+        classDetailsViewController.title = @"Info";
+        [sectionedListViewController.navigationController pushViewController:classDetailsViewController animated:YES];
+        [classDetailsViewController release];
+    };
     methodListViewController.objects = class.methods;
     methodListViewController.title = class.name;
     [self.navigationController pushViewController:methodListViewController animated:YES];

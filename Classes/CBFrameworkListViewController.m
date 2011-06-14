@@ -69,6 +69,13 @@
 {
     CBFramework *framework = [self tableView:tableView objectForRowAtIndexPath:indexPath];
     CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
+    classListViewController.infoBlock = ^(CBSectionedListViewController *sectionedListViewController){
+        CBFrameworkDetailsViewController *frameworkDetailsViewController = [[CBFrameworkDetailsViewController alloc] initWithNibName:@"FrameworkDetailsViewController" bundle:nil];
+        frameworkDetailsViewController.framework = framework;
+        frameworkDetailsViewController.title = @"Info";
+        [sectionedListViewController.navigationController pushViewController:frameworkDetailsViewController animated:YES];
+        [frameworkDetailsViewController release];
+    };
     classListViewController.objects = framework.classes;
     classListViewController.title = framework.name;
     [self.navigationController pushViewController:classListViewController animated:YES];
