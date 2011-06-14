@@ -70,6 +70,9 @@
 {
     [super viewDidLoad];
 
+    // Initially hide the search bar (similar to Mail.app, etc.)
+    [self.tableView setContentOffset:CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height)];
+
     // Sort the objects into sections
     UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
     NSUInteger sectionCount = [[collation sectionTitles] count], sectionIndex;
