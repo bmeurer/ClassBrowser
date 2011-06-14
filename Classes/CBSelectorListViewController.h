@@ -25,41 +25,9 @@
  * SUCH DAMAGE.
  */
 
-#import "CBFramework.h"
+#import "CBSectionedListViewController.h"
 
 
-@interface CBClass : NSObject {
-@private
-    CBClass     *_next;
-    Class        _class;
-    CBFramework *_framework;
-    NSString    *_name;
-    NSArray     *_methods;
-    NSArray     *_subClasses;
-}
-
-+ (NSArray *)registeredClasses;
-+ (CBClass *)classWithClass:(Class)aClass;
-
-- (id)initWithClass:(Class)aClass;
-
-- (CBFramework *)framework;
-- (NSString *)name;
-- (NSUInteger)instanceSize;
-- (NSInteger)version;
-
-- (NSSet *)classSelectors;
-- (NSSet *)instanceSelectors;
-
-- (NSArray *)methods;
-
-- (BOOL)isSubClassOfClass:(CBClass *)aClass;
-- (NSArray *)subClasses;
-
-- (BOOL)isSuperClassOfClass:(CBClass *)aClass;
-- (CBClass *)superClass;
-
-- (NSSet *)protocols;
-- (NSSet *)allProtocols;
+@interface CBSelectorListViewController : CBSectionedListViewController
 
 @end

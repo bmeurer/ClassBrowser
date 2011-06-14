@@ -25,8 +25,6 @@
  * SUCH DAMAGE.
  */
 
-#include <objc/runtime.h>
-
 #import <Foundation/Foundation.h>
 
 
@@ -43,6 +41,9 @@
 - (id)initWithProtocol:(Protocol *)aProtocol;
 
 - (NSString *)name;
+
+- (NSSet *)classSelectors;
+- (NSSet *)instanceSelectors;
 
 - (NSSet *)protocols;
 - (NSSet *)allProtocols;

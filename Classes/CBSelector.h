@@ -25,41 +25,20 @@
  * SUCH DAMAGE.
  */
 
-#import "CBFramework.h"
+#import <Foundation/Foundation.h>
 
 
-@interface CBClass : NSObject {
+@interface CBSelector : NSObject {
 @private
-    CBClass     *_next;
-    Class        _class;
-    CBFramework *_framework;
-    NSString    *_name;
-    NSArray     *_methods;
-    NSArray     *_subClasses;
+    SEL       _selector;
+    NSString *_name;
 }
 
-+ (NSArray *)registeredClasses;
-+ (CBClass *)classWithClass:(Class)aClass;
++ (NSArray *)registeredSelectors;
++ (CBSelector *)selectorWithSelector:(SEL)aSelector;
 
-- (id)initWithClass:(Class)aClass;
+- (id)initWithSelector:(SEL)aSelector;
 
-- (CBFramework *)framework;
 - (NSString *)name;
-- (NSUInteger)instanceSize;
-- (NSInteger)version;
-
-- (NSSet *)classSelectors;
-- (NSSet *)instanceSelectors;
-
-- (NSArray *)methods;
-
-- (BOOL)isSubClassOfClass:(CBClass *)aClass;
-- (NSArray *)subClasses;
-
-- (BOOL)isSuperClassOfClass:(CBClass *)aClass;
-- (CBClass *)superClass;
-
-- (NSSet *)protocols;
-- (NSSet *)allProtocols;
 
 @end

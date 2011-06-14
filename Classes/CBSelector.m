@@ -25,30 +25,55 @@
  * SUCH DAMAGE.
  */
 
-#import "CBMethod.h"
+#import "CBClass.h"
+#import "CBProtocol.h"
+#import "CBSelector.h"
 
 
-@implementation CBMethod
+@implementation CBSelector
 
-+ (CBMethod *)methodWithMethod:(Method)aMethod
++ (NSArray *)registeredSelectors
 {
-    return [[[self alloc] initWithMethod:aMethod] autorelease];
+    static NSArray *registeredSelectors = nil;
+    if (!registeredSelectors) {
+        NSMutableSet *selectors = [NSMutableSet new];
+        for (CBClass *class in [CBClass registeredClasses]) {
+            NSAutoreleasePool *pool = [NSAutoreleasePool new];
+            [selectors unionSet:[class classSelectors]];
+            [selectors unionSet:[class instanceSelectors]];
+            [pool release];
+        }
+        for (CBProtocol *protocol in [CBProtocol registeredProtocols]) {
+            NSAutoreleasePool *pool = [NSAutoreleasePool new];
+            [selectors unionSet:[protocol classSelectors]];
+            [selectors unionSet:[protocol instanceSelectors]];
+            [pool release];
+        }
+        registeredSelectors = [[selectors allObjects] copy];
+        [selectors release];
+    }
+    return registeredSelectors;
+}
+
++ (CBSelector *)selectorWithSelector:(SEL)aSelector
+{
+    return [[[self alloc] initWithSelector:aSelector] autorelease];
 }
 
 - (id)init
 {
-    return [self initWithMethod:NULL];
+    return [self initWithSelector:NULL];
 }
 
-- (id)initWithMethod:(Method)aMethod
+- (id)initWithSelector:(SEL)aSelector
 {
     self = [super init];
     if (self) {
-        if (!aMethod) {
+        if (!aSelector) {
             [self release];
             return nil;
         }
-        _method = aMethod;
+        _selector = aSelector;
     }
     return self;
 }
@@ -59,10 +84,23 @@
     [super dealloc];
 }
 
+- (BOOL)isEqual:(id)anObject
+{
+    return ([anObject isMemberOfClass:[CBSelector class]]
+            && _selector == ((CBSelector *)anObject)->_selector);
+}
+
+- (NSUInteger)hash
+{
+    // The two least significant bits are
+    // meaningless due to pointer alignment
+    return (size_t)_selector >> 2;
+}
+
 - (NSString *)name
 {
     if (!_name) {
-        _name = [NSStringFromSelector(method_getName(_method)) copy];
+        _name = [NSStringFromSelector(_selector) copy];
     }
     return _name;
 }

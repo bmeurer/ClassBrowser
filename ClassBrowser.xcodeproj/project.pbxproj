@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C714FC8713A6718C002C2CDF /* CBProtocolListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */; };
+		C714FC9713A789DF002C2CDF /* CBSelectorListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FC9613A789DF002C2CDF /* CBSelectorListViewController.m */; };
+		C714FC9A13A79307002C2CDF /* CBSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FC9913A79306002C2CDF /* CBSelector.m */; };
+		C714FC9D13A7C250002C2CDF /* selector.png in Resources */ = {isa = PBXBuildFile; fileRef = C714FC9B13A7C250002C2CDF /* selector.png */; };
+		C714FC9E13A7C250002C2CDF /* selectors.png in Resources */ = {isa = PBXBuildFile; fileRef = C714FC9C13A7C250002C2CDF /* selectors.png */; };
 		C78C468313A3B65A001E58D7 /* CBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468213A3B65A001E58D7 /* CBClass.m */; };
 		C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468613A3B6D6001E58D7 /* CBFramework.m */; };
 		C7CAD91713A520970024ADCE /* CBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CAD91613A520970024ADCE /* CBProtocol.m */; };
@@ -45,6 +49,12 @@
 /* Begin PBXFileReference section */
 		C714FC8413A6718C002C2CDF /* CBProtocolListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBProtocolListViewController.h; sourceTree = "<group>"; };
 		C714FC8513A6718C002C2CDF /* CBProtocolListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBProtocolListViewController.m; sourceTree = "<group>"; };
+		C714FC9513A789DF002C2CDF /* CBSelectorListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSelectorListViewController.h; sourceTree = "<group>"; };
+		C714FC9613A789DF002C2CDF /* CBSelectorListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSelectorListViewController.m; sourceTree = "<group>"; };
+		C714FC9813A79306002C2CDF /* CBSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBSelector.h; sourceTree = "<group>"; };
+		C714FC9913A79306002C2CDF /* CBSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSelector.m; sourceTree = "<group>"; };
+		C714FC9B13A7C250002C2CDF /* selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selector.png; sourceTree = "<group>"; };
+		C714FC9C13A7C250002C2CDF /* selectors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectors.png; sourceTree = "<group>"; };
 		C78C468113A3B65A001E58D7 /* CBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClass.h; sourceTree = "<group>"; };
 		C78C468213A3B65A001E58D7 /* CBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClass.m; sourceTree = "<group>"; };
 		C78C468513A3B6D6001E58D7 /* CBFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFramework.h; sourceTree = "<group>"; };
@@ -120,6 +130,8 @@
 				C7CF077613A4E98A008B3BA0 /* CBMethod.m */,
 				C7CAD91513A520970024ADCE /* CBProtocol.h */,
 				C7CAD91613A520970024ADCE /* CBProtocol.m */,
+				C714FC9813A79306002C2CDF /* CBSelector.h */,
+				C714FC9913A79306002C2CDF /* CBSelector.m */,
 			);
 			name = "Runtime Entities";
 			sourceTree = "<group>";
@@ -136,6 +148,8 @@
 		C7CAD93D13A6685E0024ADCE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C714FC9B13A7C250002C2CDF /* selector.png */,
+				C714FC9C13A7C250002C2CDF /* selectors.png */,
 				C7E3812113A2B2E600758C3D /* class.png */,
 				C7CAD92013A53D240024ADCE /* classes.png */,
 				C7E3811A13A2ABAB00758C3D /* framework.png */,
@@ -225,6 +239,8 @@
 				C7ED4DE213A4A5CE0066B411 /* CBFrameworkDetailsViewController.m */,
 				C7E3810F13A27DD300758C3D /* CBFrameworkListViewController.h */,
 				C7E3811013A27DD300758C3D /* CBFrameworkListViewController.m */,
+				C714FC9513A789DF002C2CDF /* CBSelectorListViewController.h */,
+				C714FC9613A789DF002C2CDF /* CBSelectorListViewController.m */,
 				C7CF077813A4ED7A008B3BA0 /* CBMethodListViewController.h */,
 				C7CF077913A4ED7A008B3BA0 /* CBMethodListViewController.m */,
 				C714FC8413A6718C002C2CDF /* CBProtocolListViewController.h */,
@@ -302,6 +318,8 @@
 				C7CAD93A13A6684C0024ADCE /* methods.png in Resources */,
 				C7CAD93B13A6684C0024ADCE /* properties.png in Resources */,
 				C7CAD93C13A6684C0024ADCE /* protocols.png in Resources */,
+				C714FC9D13A7C250002C2CDF /* selector.png in Resources */,
+				C714FC9E13A7C250002C2CDF /* selectors.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +345,8 @@
 				C7CAD91C13A52C170024ADCE /* CBRootViewController.m in Sources */,
 				C7CAD92E13A62D9E0024ADCE /* UILabel+BMRoundedRectAdditions.m in Sources */,
 				C714FC8713A6718C002C2CDF /* CBProtocolListViewController.m in Sources */,
+				C714FC9713A789DF002C2CDF /* CBSelectorListViewController.m in Sources */,
+				C714FC9A13A79307002C2CDF /* CBSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

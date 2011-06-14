@@ -32,13 +32,14 @@
 
 @interface CBMethod : NSObject {
 @private
-    Method _method;
+    Method    _method;
+    NSString *_name;
 }
 
 + (CBMethod *)methodWithMethod:(Method)aMethod;
 
 - (id)initWithMethod:(Method)aMethod;
 
-@property (nonatomic, readonly) NSString *name;
+- (NSString *)name;
 
 @end

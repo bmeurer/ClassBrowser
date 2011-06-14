@@ -25,41 +25,26 @@
  * SUCH DAMAGE.
  */
 
-#import "CBFramework.h"
+#import "CBSelector.h"
+#import "CBSelectorListViewController.h"
 
 
-@interface CBClass : NSObject {
-@private
-    CBClass     *_next;
-    Class        _class;
-    CBFramework *_framework;
-    NSString    *_name;
-    NSArray     *_methods;
-    NSArray     *_subClasses;
+@implementation CBSelectorListViewController
+
+#pragma mark - UITableViewDataSource methods
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *const CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    CBSelector *selector = [self tableView:tableView objectForRowAtIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:@"selector"];
+    cell.textLabel.text = selector.name;
+    return cell;
 }
-
-+ (NSArray *)registeredClasses;
-+ (CBClass *)classWithClass:(Class)aClass;
-
-- (id)initWithClass:(Class)aClass;
-
-- (CBFramework *)framework;
-- (NSString *)name;
-- (NSUInteger)instanceSize;
-- (NSInteger)version;
-
-- (NSSet *)classSelectors;
-- (NSSet *)instanceSelectors;
-
-- (NSArray *)methods;
-
-- (BOOL)isSubClassOfClass:(CBClass *)aClass;
-- (NSArray *)subClasses;
-
-- (BOOL)isSuperClassOfClass:(CBClass *)aClass;
-- (CBClass *)superClass;
-
-- (NSSet *)protocols;
-- (NSSet *)allProtocols;
 
 @end

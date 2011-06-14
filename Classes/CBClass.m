@@ -28,7 +28,11 @@
 #import "CBClass.h"
 #import "CBMethod.h"
 #import "CBProtocol.h"
+#import "CBSelector.h"
 
+
+static unsigned CBClassHash(Class class);
+static NSSet *CBSelectorsFromClass(Class class);
 
 static CBClass *CBClassHashTable[7457] = { NULL, };
 
@@ -36,6 +40,24 @@ static unsigned CBClassHash(Class class)
 {
     // The two least significant bits are meaningless due to pointer alignment
     return ((size_t)class >> 2) % (sizeof(CBClassHashTable) / sizeof(*CBClassHashTable));
+}
+
+static NSSet *CBSelectorsFromClass(Class class)
+{
+    unsigned i, j, methodCount = 0;
+    Method *methodList = class_copyMethodList(class, &methodCount);
+    for (i = j = 0; i < methodCount; ++i) {
+        CBSelector *selector = [[CBSelector alloc] initWithSelector:method_getName(methodList[i])];
+        if (selector) {
+            methodList[j++] = (Method)selector;
+        }
+    }
+    NSSet *selectors = [NSSet setWithObjects:(id *)methodList count:j];
+    while (j > 0) {
+        [(id)methodList[--j] release];
+    }
+    free(methodList);
+    return selectors;
 }
 
 
@@ -205,21 +227,29 @@ static unsigned CBClassHash(Class class)
     return [CBClass classWithClass:class_getSuperclass(_class)];
 }
 
+- (NSSet *)classSelectors
+{
+    return CBSelectorsFromClass(_class->isa);
+}
+
+- (NSSet *)instanceSelectors
+{
+    return CBSelectorsFromClass(_class);
+}
+
 - (NSArray *)methods
 {
     if (!_methods) {
         unsigned i, j, methodCount = 0;
-        Method *methods = class_copyMethodList(_class, &methodCount);
-        if (methods) {
-            for (i = j = 0; i < methodCount; ++i) {
-                CBMethod *method = [CBMethod methodWithMethod:methods[i]];
-                if (method) {
-                    methods[j++] = (Method)method;
-                }
+        Method *methodsList = class_copyMethodList(_class, &methodCount);
+        for (i = j = 0; i < methodCount; ++i) {
+            CBMethod *method = [CBMethod methodWithMethod:methodsList[i]];
+            if (method) {
+                methodsList[j++] = (Method)method;
             }
-            _methods = [[NSArray alloc] initWithObjects:(const id *)methods count:j];
-            free(methods);
         }
+        _methods = [[NSArray alloc] initWithObjects:(const id *)methodsList count:j];
+        free(methodsList);
     }
     return _methods;
 }

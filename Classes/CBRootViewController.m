@@ -30,6 +30,8 @@
 #import "CBClass.h"
 #import "CBClassListViewController.h"
 #import "CBFrameworkListViewController.h"
+#import "CBSelector.h"
+#import "CBSelectorListViewController.h"
 #import "CBProtocol.h"
 #import "CBProtocolListViewController.h"
 #import "CBRootViewController.h"
@@ -68,7 +70,7 @@
                 numberOfRows = 2;
                 break;
                 
-            case 2: // Messages and Properties
+            case 2: // Selectors and Properties
                 numberOfRows = 2;
                 break;
         }
@@ -123,8 +125,9 @@
         {
             switch (indexPath.row) {
                 case 0:
-                    cell.imageView.image = [UIImage imageNamed:@"methods"];
-                    cell.textLabel.text = @"Messages";
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBSelector registeredSelectors] count]];
+                    cell.imageView.image = [UIImage imageNamed:@"selectors"];
+                    cell.textLabel.text = @"Selectors";
                     break;
                     
                 case 1:
@@ -185,6 +188,24 @@
                     }
                 }
                 break;
+            }
+                
+            case 2:
+            {
+                switch (indexPath.row) {
+                    case 0: // Selectors
+                    {
+                        CBSelectorListViewController *selectorListViewController = [[CBSelectorListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
+                        selectorListViewController.objects = [CBSelector registeredSelectors];
+                        selectorListViewController.title = @"Selectors";
+                        [self.navigationController pushViewController:selectorListViewController animated:YES];
+                        [selectorListViewController release];
+                        break;
+                    }
+                        
+                    case 1: // Properties
+                        break; // TODO
+                }
             }
         }
     }

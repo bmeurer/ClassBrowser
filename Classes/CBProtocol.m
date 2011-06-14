@@ -27,7 +27,11 @@
 
 #import "CBFramework.h"
 #import "CBProtocol.h"
+#import "CBSelector.h"
 
+
+static unsigned CBProtocolHash(Protocol *protocol);
+static NSSet *CBSelectorsFromProtocol(Protocol *protocol, BOOL isRequiredMethod, BOOL isInstanceMethod);
 
 static CBProtocol *CBProtocolHashTable[727] = { NULL, };
 
@@ -35,6 +39,24 @@ static unsigned CBProtocolHash(Protocol *protocol)
 {
     // The two least significant bits are meaningless due to pointer alignment
     return ((size_t)protocol >> 2) % (sizeof(CBProtocolHashTable) / sizeof(*CBProtocolHashTable));
+}
+
+static NSSet *CBSelectorsFromProtocol(Protocol *protocol, BOOL isRequiredMethod, BOOL isInstanceMethod)
+{
+    unsigned i, j, methodCount = 0;
+    struct objc_method_description *methodList = protocol_copyMethodDescriptionList(protocol, isRequiredMethod, isInstanceMethod, &methodCount);
+    for (i = j = 0; i < methodCount; ++i) {
+        CBSelector *selector = [[CBSelector alloc] initWithSelector:methodList[i].name];
+        if (selector) {
+            ((CBSelector **)methodList)[j++] = selector;
+        }
+    }
+    NSSet *selectors = [NSSet setWithObjects:(id *)methodList count:j];
+    while (j > 0) {
+        [((id *)methodList)[--j] release];
+    }
+    free(methodList);
+    return selectors;
 }
 
 
@@ -149,6 +171,16 @@ static unsigned CBProtocolHash(Protocol *protocol)
         _name = [NSStringFromProtocol(_protocol) copy];
     }
     return _name;
+}
+
+- (NSSet *)classSelectors
+{
+    return [CBSelectorsFromProtocol(_protocol, NO, NO) setByAddingObjectsFromSet:CBSelectorsFromProtocol(_protocol, YES, NO)];
+}
+
+- (NSSet *)instanceSelectors
+{
+    return [CBSelectorsFromProtocol(_protocol, NO, YES) setByAddingObjectsFromSet:CBSelectorsFromProtocol(_protocol, YES, YES)];
 }
 
 - (NSSet *)protocols
