@@ -30,7 +30,6 @@
 
 @interface CBSectionedListViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate> {
 @private
-    NSArray *_objects;
     NSMutableArray *_searchResults;
     NSArray *_sections;
 }
@@ -38,5 +37,12 @@
 - (id)tableView:(UITableView *)tableView objectForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @property (nonatomic, copy) NSArray *objects;
+
+/**
+ * Code block to execute when the "Info" button is activated.
+ */
+@property (nonatomic, copy) void (^infoBlock)();
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *infoButtonItem;
+- (IBAction)infoButtonItemDidActivate:(UIBarButtonItem *)infoButtonItem;
 
 @end

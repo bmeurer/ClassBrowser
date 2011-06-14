@@ -31,12 +31,16 @@
 @implementation CBSectionedListViewController
 
 @synthesize objects = _objects;
+@synthesize infoBlock = _infoBlock;
+@synthesize infoButtonItem = _infoButtonItem;
 
 - (void)dealloc
 {
     [_objects release];
     [_searchResults release];
     [_sections release];
+    [_infoBlock release];
+    [_infoButtonItem release];
     [super dealloc];
 }
 
@@ -50,6 +54,14 @@
         object = [_searchResults objectAtIndex:indexPath.row];
     }
     return object;
+}
+
+- (IBAction)infoButtonItemDidActivate:(UIBarButtonItem *)infoButtonItem
+{
+    void (^infoBlock)() = self.infoBlock;
+    if (infoBlock) {
+        infoBlock();
+    }
 }
 
 #pragma mark - UIViewController methods
@@ -77,6 +89,11 @@
         [sections replaceObjectAtIndex:sectionIndex withObject:rows];
     }
     [_sections release], _sections = sections;
+    
+    // Show the "Info" button if an infoBlock is set
+    if (self.infoBlock) {
+        self.navigationItem.rightBarButtonItem = self.infoButtonItem;
+    }
 }
 
 - (void)viewDidUnload
@@ -86,6 +103,9 @@
     // Release the search results and sections
     [_searchResults release], _searchResults = nil;
     [_sections release], _sections = nil;
+    
+    // Release any references to IB outlets
+    self.infoButtonItem = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
