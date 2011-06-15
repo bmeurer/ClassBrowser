@@ -30,4 +30,9 @@
 
 @interface CBRootViewController : UITableViewController
 
+@property (nonatomic, copy) NSArray *frameworks;
+@property (nonatomic, copy) NSArray *classes;
+@property (nonatomic, copy) NSArray *protocols;
+@property (nonatomic, copy) NSArray *selectors;
+
 @end

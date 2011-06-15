@@ -80,7 +80,7 @@
 					<bool key="IBUIMultipleTouchEnabled">YES</bool>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				</object>
-				<object class="IBUIToolbar" key="IBUIToolbar" id="343309819">
+				<object class="IBUIToolbar" key="IBUIToolbar" id="1043035795">
 					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrame">{{0, 416}, {320, 44}}</string>
@@ -147,6 +147,14 @@
 					</object>
 					<int key="connectionID">17</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">rootViewController</string>
+						<reference key="source" ref="25658225"/>
+						<reference key="destination" ref="906935768"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -190,7 +198,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="256604502"/>
 							<reference ref="906935768"/>
-							<reference ref="343309819"/>
+							<reference ref="1043035795"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">navigationController</string>
@@ -217,7 +225,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">18</int>
-						<reference key="object" ref="343309819"/>
+						<reference key="object" ref="1043035795"/>
 						<reference key="parent" ref="37211214"/>
 					</object>
 				</object>
@@ -271,7 +279,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">18</int>
+			<int key="maxID">19</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -284,11 +292,13 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>navigationController</string>
+							<string>rootViewController</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UINavigationController</string>
+							<string>CBRootViewController</string>
 							<string>UIWindow</string>
 						</object>
 					</object>
@@ -297,6 +307,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>navigationController</string>
+							<string>rootViewController</string>
 							<string>window</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -304,6 +315,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">navigationController</string>
 								<string key="candidateClassName">UINavigationController</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">rootViewController</string>
+								<string key="candidateClassName">CBRootViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">window</string>

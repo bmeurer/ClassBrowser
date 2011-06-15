@@ -25,11 +25,12 @@
  * SUCH DAMAGE.
  */
 
-#import <UIKit/UIKit.h>
+#import "CBRootViewController.h"
 
 
 @interface CBAppDelegate : NSObject <UIApplicationDelegate>
 
+@property (nonatomic, retain) IBOutlet CBRootViewController *rootViewController;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 

@@ -39,6 +39,54 @@
 
 @implementation CBRootViewController
 
+@synthesize frameworks = _frameworks;
+@synthesize classes = _classes;
+@synthesize protocols = _protocols;
+@synthesize selectors = _selectors;
+
+- (void)dealloc
+{
+    [_frameworks release];
+    [_classes release];
+    [_protocols release];
+    [_selectors release];
+    [super dealloc];
+}
+
+#pragma mark - Properties
+
+- (void)setFrameworks:(NSArray *)frameworks
+{
+    if (_frameworks != frameworks) {
+        [_frameworks release], _frameworks = [frameworks copy];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+- (void)setClasses:(NSArray *)classes
+{
+    if (_classes != classes) {
+        [_classes release], _classes = [classes copy];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+- (void)setProtocols:(NSArray *)protocols
+{
+    if (_protocols != protocols) {
+        [_protocols release], _protocols = [protocols copy];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:1]] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+- (void)setSelectors:(NSArray *)selectors
+{
+    if (_selectors != selectors) {
+        [_selectors release], _selectors = [selectors copy];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:2]] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
 #pragma mark - UIViewController methods
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -91,13 +139,11 @@
         cell.detailTextLabel.textAlignment = UITextAlignmentCenter;
         cell.detailTextLabel.textColor = [UIColor whiteColor];
     }
-    else {
-        cell.detailTextLabel.text = nil;
-    }
     switch (indexPath.section) {
         case 0:
         {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBFramework registeredFrameworks] count]];
+            unsigned frameworkCount = [self.frameworks count];
+            cell.detailTextLabel.text = frameworkCount ? [NSString stringWithFormat:@"%d", frameworkCount] : nil;
             cell.imageView.image = [UIImage imageNamed:@"frameworks"];
             cell.textLabel.text = @"Frameworks";
             break;
@@ -107,16 +153,22 @@
         {
             switch (indexPath.row) {
                 case 0:
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBClass registeredClasses] count]];
+                {
+                    unsigned classCount = [self.classes count];
+                    cell.detailTextLabel.text = classCount ? [NSString stringWithFormat:@"%d", classCount] : nil;
                     cell.imageView.image = [UIImage imageNamed:@"classes"];
                     cell.textLabel.text = @"Classes";
                     break;
-                    
+                }
+
                 case 1:
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBProtocol registeredProtocols] count]];
+                {
+                    unsigned protocolCount = [self.protocols count];
+                    cell.detailTextLabel.text = protocolCount ? [NSString stringWithFormat:@"%d", protocolCount] : nil;
                     cell.imageView.image = [UIImage imageNamed:@"protocols"];
                     cell.textLabel.text = @"Protocols";
                     break;
+                }
             }
             break;
         }
@@ -125,15 +177,21 @@
         {
             switch (indexPath.row) {
                 case 0:
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[CBSelector registeredSelectors] count]];
+                {
+                    unsigned selectorCount = [self.selectors count];
+                    cell.detailTextLabel.text = selectorCount ? [NSString stringWithFormat:@"%d", selectorCount] : nil;
                     cell.imageView.image = [UIImage imageNamed:@"selectors"];
                     cell.textLabel.text = @"Selectors";
                     break;
-                    
+                }
+
                 case 1:
+                {
+                    cell.detailTextLabel.text = nil;
                     cell.imageView.image = [UIImage imageNamed:@"properties"];
                     cell.textLabel.text = @"Properties";
                     break;
+                }
             }
             break;
         }
@@ -154,7 +212,7 @@
                     case 0: // Frameworks
                     {
                         CBFrameworkListViewController *frameworkListViewController = [[CBFrameworkListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
-                        frameworkListViewController.objects = [CBFramework registeredFrameworks];
+                        frameworkListViewController.objects = self.frameworks;
                         frameworkListViewController.title = @"Frameworks";
                         [self.navigationController pushViewController:frameworkListViewController animated:YES];
                         [frameworkListViewController release];
@@ -170,7 +228,7 @@
                     case 0: // Classes
                     {
                         CBClassListViewController *classListViewController = [[CBClassListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
-                        classListViewController.objects = [CBClass registeredClasses];
+                        classListViewController.objects = self.classes;
                         classListViewController.title = @"Classes";
                         [self.navigationController pushViewController:classListViewController animated:YES];
                         [classListViewController release];
@@ -180,7 +238,7 @@
                     case 1: // Protocols
                     {
                         CBProtocolListViewController *protocolListViewController = [[CBProtocolListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
-                        protocolListViewController.objects = [CBProtocol registeredProtocols];
+                        protocolListViewController.objects = self.protocols;
                         protocolListViewController.title = @"Protocols";
                         [self.navigationController pushViewController:protocolListViewController animated:YES];
                         [protocolListViewController release];
@@ -196,7 +254,7 @@
                     case 0: // Selectors
                     {
                         CBSelectorListViewController *selectorListViewController = [[CBSelectorListViewController alloc] initWithNibName:@"SectionedListViewController" bundle:nil];
-                        selectorListViewController.objects = [CBSelector registeredSelectors];
+                        selectorListViewController.objects = self.selectors;
                         selectorListViewController.title = @"Selectors";
                         [self.navigationController pushViewController:selectorListViewController animated:YES];
                         [selectorListViewController release];

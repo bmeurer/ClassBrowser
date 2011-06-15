@@ -12,6 +12,8 @@
 		C714FC9A13A79307002C2CDF /* CBSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FC9913A79306002C2CDF /* CBSelector.m */; };
 		C714FC9D13A7C250002C2CDF /* selector.png in Resources */ = {isa = PBXBuildFile; fileRef = C714FC9B13A7C250002C2CDF /* selector.png */; };
 		C714FC9E13A7C250002C2CDF /* selectors.png in Resources */ = {isa = PBXBuildFile; fileRef = C714FC9C13A7C250002C2CDF /* selectors.png */; };
+		C714FCB713A87E26002C2CDF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C714FCB613A87E26002C2CDF /* MBProgressHUD.m */; };
+		C714FCBA13A88800002C2CDF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C714FCB913A88800002C2CDF /* Default@2x.png */; };
 		C78C468313A3B65A001E58D7 /* CBClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468213A3B65A001E58D7 /* CBClass.m */; };
 		C78C468713A3B6D6001E58D7 /* CBFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C78C468613A3B6D6001E58D7 /* CBFramework.m */; };
 		C7CAD91713A520970024ADCE /* CBProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C7CAD91613A520970024ADCE /* CBProtocol.m */; };
@@ -55,6 +57,9 @@
 		C714FC9913A79306002C2CDF /* CBSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBSelector.m; sourceTree = "<group>"; };
 		C714FC9B13A7C250002C2CDF /* selector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selector.png; sourceTree = "<group>"; };
 		C714FC9C13A7C250002C2CDF /* selectors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectors.png; sourceTree = "<group>"; };
+		C714FCB513A87E26002C2CDF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C714FCB613A87E26002C2CDF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C714FCB913A88800002C2CDF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C78C468113A3B65A001E58D7 /* CBClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBClass.h; sourceTree = "<group>"; };
 		C78C468213A3B65A001E58D7 /* CBClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClass.m; sourceTree = "<group>"; };
 		C78C468513A3B6D6001E58D7 /* CBFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBFramework.h; sourceTree = "<group>"; };
@@ -81,7 +86,7 @@
 		C7CF077F13A4F24F008B3BA0 /* method.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = method.png; sourceTree = "<group>"; };
 		C7D2E55713A4BF7700AAD04C /* ClassDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassDetailsViewController.xib; sourceTree = "<group>"; };
 		C7D2E55813A4BF7800AAD04C /* CBClassDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBClassDetailsViewController.m; sourceTree = "<group>"; };
-		C7DCC6A513A27238009B84CC /* ClassBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7DCC6A513A27238009B84CC /* ClassBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ClassBrowser.app; path = "/Users/bmeurer/Desktop/XcodeProjects/ClassBrowser/build/Release-iphoneos/ClassBrowser.app"; sourceTree = "<absolute>"; };
 		C7DCC6A913A27238009B84CC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C7DCC6AB13A27238009B84CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7DCC6AD13A27238009B84CC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +124,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C714FCB413A87E09002C2CDF /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C714FCB513A87E26002C2CDF /* MBProgressHUD.h */,
+				C714FCB613A87E26002C2CDF /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		C714FCB813A87E61002C2CDF /* Submodules */ = {
+			isa = PBXGroup;
+			children = (
+				C714FCB413A87E09002C2CDF /* MBProgressHUD */,
+			);
+			name = Submodules;
+			sourceTree = "<group>";
+		};
 		C78C468413A3B6AE001E58D7 /* Runtime Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +170,7 @@
 		C7CAD93D13A6685E0024ADCE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C714FCB913A88800002C2CDF /* Default@2x.png */,
 				C714FC9B13A7C250002C2CDF /* selector.png */,
 				C714FC9C13A7C250002C2CDF /* selectors.png */,
 				C7E3812113A2B2E600758C3D /* class.png */,
@@ -170,6 +193,7 @@
 				C7DCC6C313A27249009B84CC /* Classes */,
 				C7DCC6D613A2750A009B84CC /* Resources */,
 				C7DCC6CD13A272D2009B84CC /* Supporting Files */,
+				C714FCB813A87E61002C2CDF /* Submodules */,
 				C7DCC6A813A27238009B84CC /* Frameworks */,
 				C7DCC6A613A27238009B84CC /* Products */,
 			);
@@ -178,7 +202,6 @@
 		C7DCC6A613A27238009B84CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C7DCC6A513A27238009B84CC /* ClassBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,6 +343,7 @@
 				C7CAD93C13A6684C0024ADCE /* protocols.png in Resources */,
 				C714FC9D13A7C250002C2CDF /* selector.png in Resources */,
 				C714FC9E13A7C250002C2CDF /* selectors.png in Resources */,
+				C714FCBA13A88800002C2CDF /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +371,7 @@
 				C714FC8713A6718C002C2CDF /* CBProtocolListViewController.m in Sources */,
 				C714FC9713A789DF002C2CDF /* CBSelectorListViewController.m in Sources */,
 				C714FC9A13A79307002C2CDF /* CBSelector.m in Sources */,
+				C714FCB713A87E26002C2CDF /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
